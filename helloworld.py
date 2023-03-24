@@ -1,4 +1,3 @@
-# Jef Andrei Pelera
-# Bryan Herrera
-# Marissa Morones
+"""Marissa Morones , Bryan Herrera, Jef Andrei Pelera"""
+
 print("Hello World, my name is Bryan")
