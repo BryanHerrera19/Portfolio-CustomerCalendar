@@ -7,8 +7,14 @@ from tkcalendar import Calendar
 win = tk.Tk()
 win.title("Magneton")
 
-calendar = Calendar(win, selectmode="day",year=2021, month=3, day=3,
-                          showweeknumbers = False)
+calendar = Calendar(win, selectmode="day", year=2021, month=3, day=3,
+                    showweeknumbers = False,
+                    background = "white",
+                    foreground = "black",  # Font colour
+                    selectbackground = "skyblue",
+                    normalbackground = "white",
+                    weekendbackground = "lightgray",
+                    weekendforeground = "white")
 
 
 
