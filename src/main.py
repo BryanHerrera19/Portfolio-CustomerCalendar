@@ -14,8 +14,7 @@ calendar = Calendar(win, selectmode="day", year=2021, month=3, day=3,
                     foreground = "black",  # Font colour
                     selectbackground = "skyblue",
                     normalbackground = "white",
-                    weekendbackground = "lightgray",
-                    weekendforeground = "white")
+                    weekendbackground = "lightgray")
 
 
 
