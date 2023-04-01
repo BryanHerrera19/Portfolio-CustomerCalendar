@@ -5,8 +5,9 @@ from tkcalendar import Calendar
 
 
 win = tk.Tk()
+win.title("Magneton")
 
-calendar = Calendar(win, selectmode="day",year= 2021, month=3, day=3,
+calendar = Calendar(win, selectmode="day",year=2021, month=3, day=3,
                           showweeknumbers = False)
 
 
