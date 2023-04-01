@@ -1,6 +1,5 @@
-from datetime import datetime
-import tkinter as tk
-from tkcalendar import *
+import tkinter as tk #GUI
+from tkcalendar import * #adding calender function and stylings
 
 
 
@@ -12,7 +11,7 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
                     showweeknumbers = False,
                     headersbackground ="white",
                     background = "white",
-                    foreground = "black",  # Font colour
+                    foreground = "black",  #font colour
                     selectbackground = "skyblue",
                     normalbackground = "white",
                     weekendbackground = "lightgray")
