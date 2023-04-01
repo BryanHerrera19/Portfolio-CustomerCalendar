@@ -1,13 +1,14 @@
 from datetime import datetime
 import tkinter as tk
-from tkcalendar import Calendar
+from tkcalendar import *
 
 
 
 win = tk.Tk()
 win.title("Magneton")
 
-calendar = Calendar(win, selectmode="day", year=2021, month=3, day=3,
+cal = Calendar(win, font="Arial 14", selectmode="day",
+                    locale="en_US", year=2023, month=4, day=1,
                     showweeknumbers = False,
                     headersbackground ="white",
                     background = "white",
@@ -18,6 +19,6 @@ calendar = Calendar(win, selectmode="day", year=2021, month=3, day=3,
 
 
 
-calendar.pack()
+cal.pack(fill="both", expand=True)
 
 win.mainloop()
