@@ -1,11 +1,13 @@
-def convert_date(input):
-    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+def convert_date(enter):
+    # Converts datetime to readable date
+    new_input = str(enter)
+    months = ["January", "February", "March", "April", "May", "June", "July"]
+    months.append( "August", "September", "October", "November", "December")
     output = ""
     day, month, year = "", "", ""
     date_index = 0
     date = [year, month, day]
-    
-    for character in str(input):
+    for character in new_input:
         if character == "-":
             date_index += 1
         else:
@@ -15,14 +17,10 @@ def convert_date(input):
     output = month1 + " " + day1 + ", " + year1
     return output 
 
-
-def convert_hour(input):
-    if int(input) > 12:
-        output = input -12
+def convert_hour(enter):
+    # Converts Time to a 12 hour system
+    new_input = int(enter)
+    if new_input > 12:
+        output = new_input -12
         return output
-    return input
-
-
-
-    
-
+    return new_input
