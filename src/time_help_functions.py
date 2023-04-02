@@ -16,7 +16,7 @@ def convert_date(enter):
     date[1]= str(int(date[1]) - 1)
     month1, day1, year1 = months[int(date[1])], date[2], date[0]
     output = month1 + " " + day1 + ", " + year1
-    return output 
+    return output
 def convert_hour(enter):
     """Converts Time to a 12 hour system"""
     new_input = int(enter)
