@@ -20,6 +20,7 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
 cal.pack(pady=20)
 
 def create_event():
+    '''Create event window for calendar'''
     top = tk.Toplevel(win)
     top.geometry('640x360')
     top.title("Creating Event")
