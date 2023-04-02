@@ -1,7 +1,9 @@
 # pylint: disable=missing-module-docstring
-import time_help_functions as of
-from datetime import date
+#from datetime import date
+
 from datetime import datetime
+
+import time_help_functions as of
 
 
 now = datetime.now()
