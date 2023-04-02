@@ -26,20 +26,30 @@ def create_event():
     top.geometry('640x360')
     top.title("Creating Event")
 
+    def set_event():
+        '''Set event on calendar and color it'''
+        cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
+        cal.tag_config("Message", background="MediumPurple1", foreground="white")
+        top.destroy()
+
     #Label Declerations
     main_label = tk.Label(top, text="Enter Event Details", font="Arial 14")
-    temp_Cal = DateEntry(top, selectmode='day',showweeknumbers=False, pady=10)
-    #Label Positioning
+    date_label = tk.Label(top, text="Current Date Set: ", font="Arial 14")
+    temp_cal = DateEntry(top, selectmode='day',showweeknumbers=False)
+    #Button Declerations
+    submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
+    #Label & Button Positioning
     main_label.pack(pady=5)
-    temp_Cal.pack(pady=10)
+    date_label.pack(pady=10)
+    temp_cal.pack(pady=10)
+    submit_btn.pack(side=tk.BOTTOM)
     #Drop down date setup
-    temp_Cal.set_date(cal.get_date())
+    temp_cal.set_date(cal.get_date())
 
 #Labels
 date = tk.Label(win, text="")
 #Buttons
-tk.Button(win, text="Create New Event",
-       command=create_event).pack(pady=20)
+tk.Button(win, text="Create New Event", command=create_event).pack(pady=20)
 
 cal.pack(fill="both", expand=True)
 
