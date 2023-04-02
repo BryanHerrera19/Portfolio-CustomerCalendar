@@ -28,17 +28,18 @@ def create_event():
 
     #Label Declerations
     main_label = tk.Label(top, text="Enter Event Details", font="Arial 14")
-    tempCal = DateEntry(top, selectmode='day',showweeknumbers=False, pady=10)
+    temp_Cal = DateEntry(top, selectmode='day',showweeknumbers=False, pady=10)
     #Label Positioning
     main_label.pack(pady=5)
-    tempCal.pack(pady=10)
+    temp_Cal.pack(pady=10)
     #Drop down date setup
-    tempCal.set_date(cal.get_date())
+    temp_Cal.set_date(cal.get_date())
 
+#Labels
+date = tk.Label(win, text="")
+#Buttons
 tk.Button(win, text="Create New Event",
        command=create_event).pack(pady=20)
-
-date = tk.Label(win, text="")
 
 cal.pack(fill="both", expand=True)
 
