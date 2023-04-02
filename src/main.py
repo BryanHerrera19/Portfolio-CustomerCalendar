@@ -1,4 +1,4 @@
-# noinspection PyMissingOrEmptyDocstring
+""" noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
 import tkcalendar
 
