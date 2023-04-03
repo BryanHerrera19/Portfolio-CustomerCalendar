@@ -1,12 +1,16 @@
+# pylint: disable=invalid-name
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
-
+import time_help_functions as of
+from datetime import date
+from datetime import datetime
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
 win = tk.Tk()
 win.geometry('1280x720')
 win.title("Magneton")
+change = True
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
@@ -19,7 +23,6 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
                weekendbackground="lightgray")
 
 cal.pack(pady=20)
-
 def create_event():
     '''Create event window for calendar'''
     top = tk.Toplevel(win)
@@ -36,7 +39,7 @@ def create_event():
     main_label = tk.Label(top, text="Enter Event Details", font="Arial 14")
     date_label = tk.Label(top, text="Current Date Set: ", font="Arial 14")
     temp_cal = DateEntry(top, selectmode='day',showweeknumbers=False)
-    #Button Declerations
+    #Button Declarations
     submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
     #Label & Button Positioning
     main_label.pack(pady=5)
@@ -45,12 +48,28 @@ def create_event():
     submit_btn.pack(side=tk.BOTTOM)
     #Drop down date setup
     temp_cal.set_date(cal.get_date())
-
+def update():
+    """Updates the Displayed Day and Time every Second"""
+    TODAY = of.convert_date(date.today())
+    DATE["text"] = f"Current Day: {TODAY}"
+    now = datetime.now()
+    hour = now.strftime("%H")
+    minute = now.strftime("%M")
+    second = now.strftime("%S")
+    ante_post = now.strftime("%p")
+    hour = of.convert_hour(hour)
+    current_time = f"{hour}:{minute}:{second} {ante_post}"
+    timeLabel["text"] = f"Time: {current_time}"
+    timeLabel.after(1000, update)
+    DATE.after(1000,update)
 #Labels
-date = tk.Label(win, text="")
+DATE = tk.Label(win, text = "Start",  font = "Arial 14")
+timeLabel = tk.Label(win, text = "Start", font = "Arial 14",
+    bd = 5, padx = 10, pady = 10)
+timeLabel.pack()
+DATE.pack()
 #Buttons
 tk.Button(win, text="Create New Event", command=create_event).pack(pady=20)
-
 cal.pack(fill="both", expand=True)
-
+update()
 win.mainloop()

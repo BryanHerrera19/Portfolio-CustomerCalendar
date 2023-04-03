@@ -3,7 +3,7 @@ def convert_date(enter):
     """ Converts datetime to readable date"""
     new_input = str(enter)
     months = ["January", "February", "March", "April", "May", "June", "July"]
-    months.append( "August", "September", "October", "November", "December")
+    months.append( ["August", "September", "October", "November", "December"])
     output = ""
     day, month, year = "", "", ""
     date_index = 0
