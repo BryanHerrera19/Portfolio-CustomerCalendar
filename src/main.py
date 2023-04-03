@@ -2,7 +2,6 @@
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
 from datetime import date
-from datetime import datetime
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 import time_help_functions as of
