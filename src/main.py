@@ -57,6 +57,8 @@ def update():
     timeLabel["text"] = f"Time: {current_time}"
     timeLabel.after(1000, update)
     DATE.after(1000,update)
+def open_tips():
+    """Provides user with tips on how to reduce procrastination"""
 #Labels
 DATE = tk.Label(win, text = "Start",  font = "Arial 14")
 timeLabel = tk.Label(win, text = "Start", font = "Arial 14",
@@ -65,6 +67,7 @@ timeLabel.pack()
 DATE.pack()
 #Buttons
 tk.Button(win, text="Create New Event", command=create_event).pack(pady=20)
+tk.Button(win, text = "Tips?", command = open_tips).pack(pady=20)
 cal.pack(fill="both", expand=True)
 update()
 win.mainloop()
