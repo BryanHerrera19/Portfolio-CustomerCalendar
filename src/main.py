@@ -1,11 +1,13 @@
 # pylint: disable=invalid-name
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
-import time_help_functions as of
 from datetime import date
 from datetime import datetime
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
+import time_help_functions as of
+import time_1 as t1
+
 
 win = tk.Tk()
 win.geometry('1280x720')
@@ -52,13 +54,7 @@ def update():
     """Updates the Displayed Day and Time every Second"""
     TODAY = of.convert_date(date.today())
     DATE["text"] = f"Current Day: {TODAY}"
-    now = datetime.now()
-    hour = now.strftime("%H")
-    minute = now.strftime("%M")
-    second = now.strftime("%S")
-    ante_post = now.strftime("%p")
-    hour = of.convert_hour(hour)
-    current_time = f"{hour}:{minute}:{second} {ante_post}"
+    current_time = t1.get_time()
     timeLabel["text"] = f"Time: {current_time}"
     timeLabel.after(1000, update)
     DATE.after(1000,update)
