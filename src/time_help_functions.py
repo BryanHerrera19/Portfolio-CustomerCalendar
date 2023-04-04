@@ -1,4 +1,5 @@
 """File is used to assist time_1 in creating readable dates and time"""
+# pylint: disable=line-too-long
 def convert_date(enter):
     """ Converts datetime to readable date"""
     new_input = str(enter)
