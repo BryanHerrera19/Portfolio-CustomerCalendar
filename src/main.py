@@ -6,8 +6,7 @@ from datetime import date
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
-import time_1 as t1
-import time_help_functions as of
+import time_help_functions as t1
 
 win = tk.Tk()
 win.geometry('1300x900')
@@ -68,11 +67,10 @@ def create_event():
 
 def update():
     """Updates the Displayed Day and Time every Second"""
-    TODAY = of.convert_date(date.today())
+    TODAY = t1.convert_date(date.today())
     DATE["text"] = f"Current Day: {TODAY}"
     current_time = t1.get_time()
     timeLabel["text"] = f"Time: {current_time}"
-    # timeLabel.after(1000, update) this line was making my program stop less than a minute of running it - Marissa
     DATE.after(1000, update)
 
 

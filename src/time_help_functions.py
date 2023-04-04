@@ -1,5 +1,6 @@
 """File is used to assist time_1 in creating readable dates and time"""
 # pylint: disable=line-too-long
+from datetime import datetime
 def convert_date(enter):
     """ Converts datetime to readable date"""
     new_input = str(enter)
@@ -25,3 +26,13 @@ def convert_hour(enter):
         output = new_input - 12
         return output
     return new_input
+def get_time():
+    """Grabs the current time in readable format"""
+    now = datetime.now()
+    hour = now.strftime("%H")
+    minute = now.strftime("%M")
+    second = now.strftime("%S")
+    ante_post = now.strftime("%p")
+    hour = convert_hour(hour)
+    current_time = f"{hour}:{minute}:{second} {ante_post}"
+    return current_time
