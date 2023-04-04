@@ -12,11 +12,13 @@ import time_help_functions as of
 win = tk.Tk()
 win.geometry('1300x900')
 win.title("Magneton")
+
 change = True
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
                showweeknumbers=False,
+               disabledbackground="white",
                headersbackground="white",
                background="white",
                foreground="black",  # font colour
