@@ -1,4 +1,4 @@
-"""File is used to assist time_1 in creating readable dates and time"""
+"""File is used to assist main.py in creating readable dates and time"""
 # pylint: disable=line-too-long
 from datetime import datetime
 def convert_date(enter):
