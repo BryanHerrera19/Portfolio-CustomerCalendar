@@ -12,7 +12,7 @@ import time_help_functions as of
 win = tk.Tk()
 win.geometry('1300x900')
 win.title("Magneton")
-
+win.configure(background="white")
 change = True
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
@@ -26,6 +26,7 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
                normalbackground="white",
                weekendbackground="lightgray")
 
+cal.config(background="white")
 cal.pack(pady=20)
 def create_event():
     '''Create event window for calendar'''
