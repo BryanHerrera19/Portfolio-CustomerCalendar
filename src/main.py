@@ -1,4 +1,5 @@
 # pylint: disable=invalid-name
+# pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
 from datetime import date
