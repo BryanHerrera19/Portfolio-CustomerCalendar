@@ -9,7 +9,7 @@ import time_1 as t1
 import time_help_functions as of
 
 win = tk.Tk()
-win.geometry('1280x720')
+win.geometry('1300x900')
 win.title("Magneton")
 change = True
 
