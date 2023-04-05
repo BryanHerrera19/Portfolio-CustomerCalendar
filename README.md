@@ -2,6 +2,10 @@
 # Team Magneton
 Our [TechDebt](TechDebt.md) file.
 
+## Our Product
+- We are creating a time manangment and study tool that helps students with procrastination
+- This product will be written in python
+
 ## Sprint 1
 - Completed 7 stories with 39 complexity points     
 - Implemented:   
