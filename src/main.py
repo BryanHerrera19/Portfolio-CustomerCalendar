@@ -12,7 +12,11 @@ win = tk.Tk()
 win.geometry('1300x900')
 win.title("Magneton")
 win.configure(background="white")
+
+
+
 change = True
+
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
