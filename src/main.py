@@ -3,10 +3,12 @@
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
 from datetime import date
+from datetime import time
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
 import time_help_functions as t1
+from Event_Info import Event as eventInfo
 
 win = tk.Tk()
 win.geometry('1300x900')
@@ -27,7 +29,8 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
                foreground="black",  # font colour
                selectbackground="skyblue",
                normalbackground="white",
-               weekendbackground="lightgray")
+               weekendbackground="lightgray",
+               firstweekday="sunday")
 
 cal.config(background="white")
 cal.pack(pady=20)
@@ -38,6 +41,12 @@ def create_event():
     top.title("Creating Event")
 
     def set_event():
+        print(f"date = {date_selected.get()}")
+        user_Notes = note.get(1.0, "end-1c")
+        time = hour_time.get() + " " + minute_time.get() + " " + day.get()
+        print(f"time = {time}")
+        # save event info
+        event = eventInfo(date_selected.get(), time, title.get(), user_Notes)
         '''Set event on calendar and color it'''
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
@@ -48,27 +57,42 @@ def create_event():
     date_label = tk.Label(top, text="Current Date Set: ", font="Arial 14")
     title_label = tk.Label(top, text="Title: ", font="Arial 14")
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
-    temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False)
+    time_label = tk.Label(top, text="Time: ", font="Arial 14")
+    time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
+    date_selected = tk.StringVar()
+    temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False, textvariables=date_selected)
     # Button Declarations
     submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
-    # Label & Button Positioning
-    main_label.pack(pady=5)
-    date_label.pack(pady=10)
-    temp_cal.pack(pady=10)
-    title_label.pack(pady=10)
-    submit_btn.pack(side=tk.BOTTOM)
-    # Drop down date setup
+    # Drop down date and time setup
     temp_cal.set_date(cal.get_date())
+    day = tk.StringVar()
+    day.set("AM/PM")
+    day_drop = tk.OptionMenu(top, day, "AM", "PM")
+    hour_time = tk.StringVar()
+    hour_time.set("Hour")
+    hour_time_drop = tk.OptionMenu(top, hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
+    minute_time = tk.StringVar()
+    minute_time.set("Minute")
+    minute_time_drop = tk.OptionMenu(top, minute_time, "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
+                                     "55", "60")
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
-    title.pack()
-    # note_label positioned after Title text box
-    note_label.pack(pady=10)
     # Event note textbox
-    note = tk.Text(top, width=30, height=30, font="Arial 14")
-    note.pack()
-
-
+    note = tk.Text(top, width=30, height=5, font="Arial 14")
+    # Pack everything
+    main_label.place(x=250, y=5)
+    title_label.place(x=50, y=50)
+    title.place(x=170, y=50)
+    date_label.place(x=50, y=100)
+    temp_cal.place(x=220, y=100)
+    time_label.place(x=50, y=150)
+    hour_time_drop.place(x=170, y=150)
+    time_colon_label.place(x=234, y=150)
+    minute_time_drop.place(x=250, y=150)
+    day_drop.place(x=330, y=150)
+    note_label.place(x=50, y=200)
+    note.place(x=170, y=200)
+    submit_btn.place(x=250, y=320)
 def update():
     """Updates the Displayed Day and Time every Second"""
     TODAY = t1.convert_date(date.today())
