@@ -36,6 +36,7 @@ cal.config(background="white")
 cal.pack(pady=20)
 def create_event():
     '''Create event window for calendar'''
+    # pylint: disable-msg=too-many-locals
     top = tk.Toplevel(win)
     top.geometry('640x360')
     top.title("Creating Event")
