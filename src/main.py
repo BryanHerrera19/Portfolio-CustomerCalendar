@@ -3,7 +3,7 @@
 """ noinspection PyMissingOrEmptyDocstring"""
 import tkinter as tk
 from datetime import date
-from datetime import time
+
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
@@ -41,13 +41,13 @@ def create_event():
     top.title("Creating Event")
 
     def set_event():
+        '''Set event on calendar and color it'''
+        # save event info
         print(f"date = {date_selected.get()}")
         user_Notes = note.get(1.0, "end-1c")
-        time = hour_time.get() + " " + minute_time.get() + " " + day.get()
-        print(f"time = {time}")
-        # save event info
-        event = eventInfo(date_selected.get(), time, title.get(), user_Notes)
-        '''Set event on calendar and color it'''
+        save_time = hour_time.get() + " " + minute_time.get() + " " + day.get()
+        eventInfo(date_selected.get(), save_time, title.get(), user_Notes)
+
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
         top.destroy()
