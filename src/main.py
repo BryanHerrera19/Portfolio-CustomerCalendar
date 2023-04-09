@@ -1,9 +1,9 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
-import pandas as pd
 
 import tkinter as tk
+from tkinter import messagebox
 from datetime import date
 
 from tkcalendar import Calendar
@@ -108,6 +108,12 @@ def update():
 
 def open_tips():
     """Provides user with tips on how to reduce procrastination"""
+    with open('tips.txt', 'r', encoding = 'utf-8') as file:
+        tips = file.readlines()
+    tip_string = ""
+    for line in tips:
+        tip_string += (line + "\n")
+    messagebox.showinfo("Tips", tip_string)
 
 def event_list_window():
     '''Creates a new window with a list of events'''
