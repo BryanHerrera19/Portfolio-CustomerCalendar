@@ -6,8 +6,6 @@ import tkinter as tk
 from tkinter import messagebox
 from datetime import date
 
-import pandas as pd
-
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
