@@ -1,10 +1,11 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
-import pandas as pd
 
 import tkinter as tk
 from datetime import date
+
+import pandas as pd
 
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
@@ -126,7 +127,6 @@ def event_list_window():
         event_date_label = tk.Label(event_window, text = date_string, font = "arial 14")
         event_time_label = tk.Label(event_window, text = time_string, font = "arial 14")
         event_description_label = tk.Label(event_window, text = description_string, font = "arial 14")
-        invis_label = tk.Label(event_window,text="", font = "arial 14")
         #label packing
         event_string_label.place(x=0, y=0)
         event_date_label.place(x=0, y=25)
