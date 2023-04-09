@@ -94,6 +94,7 @@ def create_event():
     note_label.place(x=50, y=200)
     note.place(x=170, y=200)
     submit_btn.place(x=250, y=320)
+
 def update():
     """Updates the Displayed Day and Time every Second"""
     TODAY = t1.convert_date(date.today())
@@ -105,6 +106,14 @@ def update():
 
 def open_tips():
     """Provides user with tips on how to reduce procrastination"""
+
+def event_list_window():
+    '''Creates a new window with a list of events'''
+    event_window = tk.Toplevel(win)
+    event_window.geometry('360x640')
+    event_window.title("Event List")
+
+
 #Labels
 DATE = tk.Label(win, text = "Start",  font = "Arial 14")
 timeLabel = tk.Label(win, text = "Start", font = "Arial 14",
@@ -114,6 +123,7 @@ DATE.pack()
 #Buttons
 tk.Button(win, text="Create New Event", command=create_event).pack(pady=20)
 tk.Button(win, text = "Tips?", command = open_tips).pack(pady=20)
+tk.Button(win, text = "Check Events", command = event_list_window).pack(pady=20)
 cal.pack(fill="both", expand=True)
 update()
 win.mainloop()
