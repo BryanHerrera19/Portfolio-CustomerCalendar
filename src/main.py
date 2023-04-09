@@ -146,9 +146,9 @@ timeLabel = tk.Label(win, text = "Start", font = "Arial 14",
 timeLabel.pack()
 DATE.pack()
 #Buttons
-tk.Button(win, text="Create New Event", command=create_event).pack(pady=20)
-tk.Button(win, text = "Tips?", command = open_tips).pack(pady=20)
-tk.Button(win, text = "Check Events", command = event_list_window).pack(pady=20)
+tk.Button(win, text="Create New Event", command=create_event, font = "arial 14 bold").pack(pady=5)
+tk.Button(win, text = "Check Events", command = event_list_window, font = "arial 14 bold").pack(pady=5)
+tk.Button(win, text = "General Study & Scheduling Tips", font = "arial 14 bold", command = open_tips).pack(pady=5)
 cal.pack(fill="both", expand=True)
 update()
 win.mainloop()
