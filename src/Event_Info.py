@@ -23,9 +23,9 @@ class Event:
         """returns event time"""
         return self.time
 
-    def getDay(self, day):
+    def getDay(self):
         """returns event day"""
-        self.day = day
+        return self.day
 
     def setName(self, name):
         """changes event title"""

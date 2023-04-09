@@ -6,6 +6,8 @@ import tkinter as tk
 from tkinter import messagebox
 from datetime import date
 
+import pandas as pd
+
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
@@ -17,10 +19,9 @@ win.geometry('1300x900')
 win.title("Magneton")
 win.configure(background="white")
 
-
-
 change = True
 
+event_list = []
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
@@ -49,7 +50,7 @@ def create_event():
         print(f"date = {date_selected.get()}")
         user_Notes = note.get(1.0, "end-1c")
         save_time = hour_time.get() + " " + minute_time.get() + " " + day.get()
-        eventInfo(date_selected.get(), save_time, title.get(), user_Notes)
+        event_list.append(eventInfo(temp_cal.get_date(), save_time, title.get(), user_Notes))
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
@@ -120,6 +121,24 @@ def event_list_window():
     event_window = tk.Toplevel(win)
     event_window.geometry('360x640')
     event_window.title("Event List")
+
+    #looping through events in list
+    for event in event_list:
+        event_string = "Event: " + event.getName()
+        date_string = "Date: " + str(event.getDay())
+        time_string = "Time: " + str(event.getTime())
+        description_string = "Description: " + event.getNotes()
+
+        #labels
+        event_string_label = tk.Label(event_window, text = event_string, font = "arial 14 bold")
+        event_date_label = tk.Label(event_window, text = date_string, font = "arial 14")
+        event_time_label = tk.Label(event_window, text = time_string, font = "arial 14")
+        event_description_label = tk.Label(event_window, text = description_string, font = "arial 14")
+        #label packing
+        event_string_label.place(x=0, y=0)
+        event_date_label.place(x=0, y=25)
+        event_time_label.place(x=0, y=50)
+        event_description_label.place(x=0, y=75)
 
 
 #Labels
