@@ -131,7 +131,7 @@ def event_list_window():
         event_string_label = tk.Label(event_window, text = event_string, font = "arial 14 bold")
         event_date_label = tk.Label(event_window, text = date_string, font = "arial 14")
         event_time_label = tk.Label(event_window, text = time_string, font = "arial 14")
-        event_description_label = tk.Label(event_window, text = description_string, font = "arial 14")
+        event_description_label = tk.Label(event_window, text = description_string, font = "arial 14", anchor='w', wraplength=360)
         #label packing
         event_string_label.place(x=0, y=0)
         event_date_label.place(x=0, y=25)
