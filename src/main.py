@@ -3,8 +3,8 @@
 """ noinspection PyMissingOrEmptyDocstring"""
 
 import tkinter as tk
-from tkinter import messagebox
 from datetime import date
+from tkinter import messagebox
 
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
@@ -39,16 +39,16 @@ def create_event():
     '''Create event window for calendar'''
     # pylint: disable-msg=too-many-locals
     top = tk.Toplevel(win)
-    top.geometry('640x360')
+    top.geometry('540x460')
     top.title("Creating Event")
 
     def set_event():
         '''Set event on calendar and color it'''
         # save event info
-        print(f"date = {date_selected.get()}")
         user_Notes = note.get(1.0, "end-1c")
-        save_time = hour_time.get() + " " + minute_time.get() + " " + day.get()
-        event_list.append(eventInfo(temp_cal.get_date(), save_time, title.get(), user_Notes))
+        save_start_time = start_hour_time.get() + ":" + start_minute_time.get() + " " + start_day.get()
+        save_end_time = end_hour_time.get() + ":" + end_minute_time.get() + " " + end_day.get()
+        event_list.append(eventInfo(temp_cal.get_date(), save_start_time, save_end_time, title.get(), user_Notes))
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
@@ -60,23 +60,38 @@ def create_event():
     title_label = tk.Label(top, text="Title: ", font="Arial 14")
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
     time_label = tk.Label(top, text="Time: ", font="Arial 14")
-    time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
+    start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
+    end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
+    to_label = tk.Label(top, text="To", font="Arial 14")
     date_selected = tk.StringVar()
     temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False, textvariables=date_selected)
     # Button Declarations
     submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
     # Drop down date and time setup
     temp_cal.set_date(cal.get_date())
-    day = tk.StringVar()
-    day.set("AM/PM")
-    day_drop = tk.OptionMenu(top, day, "AM", "PM")
-    hour_time = tk.StringVar()
-    hour_time.set("Hour")
-    hour_time_drop = tk.OptionMenu(top, hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
-    minute_time = tk.StringVar()
-    minute_time.set("Minute")
-    minute_time_drop = tk.OptionMenu(top, minute_time, "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
-                                     "55", "60")
+    start_day = tk.StringVar()
+    start_day.set("AM/PM")
+    start_day_drop = tk.OptionMenu(top, start_day, "AM", "PM")
+    start_hour_time = tk.StringVar()
+    start_hour_time.set("Hour")
+    start_hour_time_drop = tk.OptionMenu(top, start_hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
+                                         "12")
+    start_minute_time = tk.StringVar()
+    start_minute_time.set("Minute")
+    start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "0", "5", "10", "15", "20", "25", "30", "35", "40",
+                                           "45", "50",
+                                           "55", "60")
+    end_day = tk.StringVar()
+    end_day.set("AM/PM")
+    end_day_drop = tk.OptionMenu(top, end_day, "AM", "PM")
+    end_hour_time = tk.StringVar()
+    end_hour_time.set("Hour")
+    end_hour_time_drop = tk.OptionMenu(top, end_hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
+                                       "12")
+    end_minute_time = tk.StringVar()
+    end_minute_time.set("Minute")
+    end_minute_time_drop = tk.OptionMenu(top, end_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
+                                         "45", "50", "55", "60")
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
     # Event note textbox
@@ -87,14 +102,21 @@ def create_event():
     title.place(x=170, y=50)
     date_label.place(x=50, y=100)
     temp_cal.place(x=220, y=100)
+
     time_label.place(x=50, y=150)
-    hour_time_drop.place(x=170, y=150)
-    time_colon_label.place(x=234, y=150)
-    minute_time_drop.place(x=250, y=150)
-    day_drop.place(x=330, y=150)
-    note_label.place(x=50, y=200)
-    note.place(x=170, y=200)
-    submit_btn.place(x=250, y=320)
+    start_hour_time_drop.place(x=170, y=150)
+    start_time_colon_label.place(x=234, y=150)
+    start_minute_time_drop.place(x=250, y=150)
+    start_day_drop.place(x=330, y=150)
+    to_label.place(x=250, y=200)
+    end_hour_time_drop.place(x=170, y=250)
+    end_time_colon_label.place(x=234, y=250)
+    end_minute_time_drop.place(x=250, y=250)
+    end_day_drop.place(x=330, y=250)
+
+    note_label.place(x=50, y=300)
+    note.place(x=170, y=300)
+    submit_btn.place(x=250, y=420)
 
 def update():
     """Updates the Displayed Day and Time every Second"""
@@ -119,24 +141,32 @@ def event_list_window():
     event_window = tk.Toplevel(win)
     event_window.geometry('360x640')
     event_window.title("Event List")
+    x_loc = 0
+    y_loc = 0
 
-    #looping through events in list
+    # looping through events in list
     for event in event_list:
+        # if event.getDay() =
         event_string = "Event: " + event.getName()
         date_string = "Date: " + str(event.getDay())
-        time_string = "Time: " + str(event.getTime())
-        description_string = "Description: " + event.getNotes()
+        start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
+        description_string = "Description: \n" + event.getNotes()
 
-        #labels
-        event_string_label = tk.Label(event_window, text = event_string, font = "arial 14 bold")
-        event_date_label = tk.Label(event_window, text = date_string, font = "arial 14")
-        event_time_label = tk.Label(event_window, text = time_string, font = "arial 14")
-        event_description_label = tk.Label(event_window, text = description_string, font = "arial 14", anchor='w', wraplength=360)
-        #label packing
-        event_string_label.place(x=0, y=0)
-        event_date_label.place(x=0, y=25)
-        event_time_label.place(x=0, y=50)
-        event_description_label.place(x=0, y=75)
+        # labels
+        event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
+        event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
+        event_time_label = tk.Label(event_window, text=start_time_string, font="arial 14")
+        event_description_label = tk.Label(event_window, text=description_string, font="arial 14", anchor='w',
+                                           wraplength=360)
+        # label packing
+        event_string_label.place(x=x_loc, y=y_loc)
+        y_loc += 25
+        event_date_label.place(x=x_loc, y=y_loc)
+        y_loc += 25
+        event_time_label.place(x=x_loc, y=y_loc)
+        y_loc += 25
+        event_description_label.place(x=x_loc, y=y_loc)
+        y_loc += 75
 
 
 #Labels

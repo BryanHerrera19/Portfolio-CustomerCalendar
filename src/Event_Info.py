@@ -5,9 +5,10 @@
 
 class Event:
     """Saves event date, time, title, and any notes"""
-    def __init__(self, day, time, name, notes):
+    def __init__(self, day, start_time, end_time, name, notes):
         self.day = day
-        self.time = time
+        self.start_time = start_time
+        self.end_time = end_time
         self.name = name
         self.notes = notes
 
@@ -19,9 +20,13 @@ class Event:
         """returns event notes"""
         return self.notes
 
-    def getTime(self):
-        """returns event time"""
-        return self.time
+    def getStartTime(self):
+        """returns event start time"""
+        return self.start_time
+
+    def getEndTime(self):
+        """returns event end time"""
+        return self.end_time
 
     def getDay(self):
         """returns event day"""
@@ -35,9 +40,13 @@ class Event:
         """changes event notes"""
         self.notes = notes
 
-    def setTime(self, time):
-        """changes event time"""
-        self.time = time
+    def setStartTime(self, start_time):
+        """changes event start time"""
+        self.start_time = start_time
+
+    def setEndTime(self, end_time):
+        """changes event end time"""
+        self.end_time = end_time
 
     def setDay(self, day):
         """changes event day"""
