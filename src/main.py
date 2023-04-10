@@ -13,7 +13,7 @@ import time_help_functions as t1
 from Event_Info import Event as eventInfo
 
 win = tk.Tk()
-win.geometry('1300x900')
+win.geometry('1200x900')
 win.title("Magneton")
 win.configure(background="white")
 
@@ -169,16 +169,19 @@ def event_list_window():
         y_loc += 75
 
 
-#Labels
-DATE = tk.Label(win, text = "Start",  font = "Arial 14")
-timeLabel = tk.Label(win, text = "Start", font = "Arial 14",
-    bd = 5, padx = 10, pady = 10)
+# Labels
+DATE = tk.Label(win, text="Start", font="Arial 14")
+timeLabel = tk.Label(win, text="Start", font="Arial 14",
+                     bd=5, padx=10, pady=10)
 timeLabel.pack()
 DATE.pack()
-#Buttons
-tk.Button(win, text="Create New Event", command=create_event, font = "arial 14 bold").pack(pady=5)
-tk.Button(win, text = "Check Events", command = event_list_window, font = "arial 14 bold").pack(pady=5)
-tk.Button(win, text = "General Study & Scheduling Tips", font = "arial 14 bold", command = open_tips).pack(pady=5)
+# Buttons
+tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold").pack(pady=50, padx=50, side=tk.LEFT)
+tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold").pack(pady=50, padx=50,
+                                                                                          side=tk.LEFT)
+tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=50,
+                                                                                                     side=tk.LEFT)
+tk.Button(win, text="Study Timer", font="arial 14 bold").pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
 update()
 win.mainloop()
