@@ -1,5 +1,6 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=too-many-arguments
 """Class for holding event information"""
 
 

@@ -38,6 +38,7 @@ cal.pack(pady=20)
 def create_event():
     '''Create event window for calendar'''
     # pylint: disable-msg=too-many-locals
+    # pylint: disable=too-many-arguments
     top = tk.Toplevel(win)
     top.geometry('540x460')
     top.title("Creating Event")
@@ -78,7 +79,7 @@ def create_event():
                                          "12")
     start_minute_time = tk.StringVar()
     start_minute_time.set("Minute")
-    start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "0", "5", "10", "15", "20", "25", "30", "35", "40",
+    start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "00", "5", "10", "15", "20", "25", "30", "35", "40",
                                            "45", "50",
                                            "55", "60")
     end_day = tk.StringVar()
