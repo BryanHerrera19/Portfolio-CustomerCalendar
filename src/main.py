@@ -167,7 +167,7 @@ def event_list_window():
         event_time_label.place(x=x_loc, y=y_loc)
         y_loc += 25
         event_description_label.place(x=x_loc, y=y_loc)
-        y_loc += 75
+        y_loc += 120
 
 
 # Labels
