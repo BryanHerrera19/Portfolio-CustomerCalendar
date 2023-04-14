@@ -49,7 +49,8 @@ def create_event():
         user_Notes = note.get(1.0, "end-1c")
         save_start_time = start_hour_time.get() + ":" + start_minute_time.get() + " " + start_day.get()
         save_end_time = end_hour_time.get() + ":" + end_minute_time.get() + " " + end_day.get()
-        event_list.append(eventInfo(temp_cal.get_date(), save_start_time, save_end_time, title.get(), user_Notes))
+        event_list.append(
+            eventInfo(temp_cal.get_date(), save_start_time, save_end_time, title.get(), user_Notes, category))
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
@@ -61,6 +62,7 @@ def create_event():
     title_label = tk.Label(top, text="Title: ", font="Arial 14")
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
     time_label = tk.Label(top, text="Time: ", font="Arial 14")
+    category_label = tk.Label(top, text="Category: ", font="Arial 14")
     start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     to_label = tk.Label(top, text="To", font="Arial 14")
@@ -79,9 +81,8 @@ def create_event():
                                          "12")
     start_minute_time = tk.StringVar()
     start_minute_time.set("Minute")
-    start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "00", "5", "10", "15", "20", "25", "30", "35", "40",
-                                           "45", "50",
-                                           "55", "60")
+    start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
+                                           "45", "50", "55", "60")
     end_day = tk.StringVar()
     end_day.set("AM/PM")
     end_day_drop = tk.OptionMenu(top, end_day, "AM", "PM")
@@ -93,6 +94,11 @@ def create_event():
     end_minute_time.set("Minute")
     end_minute_time_drop = tk.OptionMenu(top, end_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
                                          "45", "50", "55", "60")
+
+    category = tk.StringVar()
+    category.set("Category")
+    category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
+                                  "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
     # Event note textbox
@@ -109,11 +115,14 @@ def create_event():
     start_time_colon_label.place(x=234, y=150)
     start_minute_time_drop.place(x=250, y=150)
     start_day_drop.place(x=330, y=150)
-    to_label.place(x=250, y=200)
-    end_hour_time_drop.place(x=170, y=250)
-    end_time_colon_label.place(x=234, y=250)
-    end_minute_time_drop.place(x=250, y=250)
-    end_day_drop.place(x=330, y=250)
+    to_label.place(x=250, y=175)
+    end_hour_time_drop.place(x=170, y=200)
+    end_time_colon_label.place(x=234, y=200)
+    end_minute_time_drop.place(x=250, y=200)
+    end_day_drop.place(x=330, y=200)
+
+    category_label.place(x=50, y=250)
+    category_drop.place(x=170, y=250)
 
     note_label.place(x=50, y=300)
     note.place(x=170, y=300)
