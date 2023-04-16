@@ -218,7 +218,7 @@ def study_timer():
             if clock_Time == 0:
                 messagebox.showinfo("Timer", "Timer Has Finisehd!")
                 # To Close Timer
-                tWindow.destroy() 
+                tWindow.destroy()
             clock_Time -= 1
     setTimeButton = tk.Button(tWindow, text = 'Set Time', bd = 5, command=runTimer)
     setTimeButton.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
