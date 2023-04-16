@@ -139,7 +139,6 @@ def update():
     timeLabel["text"] = f"Time: {current_time}"
     DATE.after(1000, update)
 
-
 def open_tips():
     """Provides user with tips on how to reduce procrastination"""
     with open('tips.txt', 'r', encoding = 'utf-8') as file:
@@ -159,12 +158,10 @@ def event_list_window():
 
     # looping through events in list
     for event in event_list:
-        # if event.getDay() =
         event_string = "Event: " + event.getName()
         date_string = "Date: " + str(event.getDay())
         start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
         description_string = "Description: \n" + event.getNotes()
-
         # labels
         event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
         event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
