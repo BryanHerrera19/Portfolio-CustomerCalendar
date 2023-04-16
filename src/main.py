@@ -22,8 +22,6 @@ change = True
 
 event_list = []
 
-t = 0
-
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
                showweeknumbers=False,
@@ -182,19 +180,23 @@ def event_list_window():
         y_loc += 120
 
 def study_timer():
-    def set_timer():
+    t = 0
+    def update_t(i1):
+        return i1 + int(entry_1.get())
+    def sub_1(i2):
+        return i2 - 1
+    def set_timer(t):
         "sets timer"
-        global t
-        t = t + int(entry_1.get())
+        t = update_t(t)
         return t
-    def countdown():
+    def countdown(t):
         """starts timer"""
-        global t
-        if t>0:
-            display.config(text=t)
-            t = t - 1
+        input = t
+        if input>0:
+            display.config(text=input)
+            input = input - 1
             display.after(1000, countdown)
-        elif t == 0:
+        elif input == 0:
             print("end")
             display.config(text = "Timer Ended")
     root = tk.Toplevel(win)
@@ -204,9 +206,9 @@ def study_timer():
     times = tk.StringVar()
     entry_1 = tk.Entry(root, textvariable = times)
     entry_1.grid(row=3, column=2)
-    b1 = tk.Button(root, text = "Set Time (seconds)", width = 20, command = set_timer)
+    b1 = tk.Button(root, text = "Set Time (seconds)", width = 20, command = lambda: set_timer(t))
     b1.grid(row=4, column = 2, padx = 20)
-    b2 = tk.Button(root, text = "Start Timer", width = 20, command = countdown)
+    b2 = tk.Button(root, text = "Start Timer", width = 20, command = lambda: countdown(set_timer(t)))
     b2.grid(row = 6, column = 2, padx = 20)
 
     root.mainloop()
