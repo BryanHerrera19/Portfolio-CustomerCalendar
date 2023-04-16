@@ -58,7 +58,7 @@ def create_event():
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
         top.destroy()
 
-    # Label Declerations
+    # Label Declarations
     main_label = tk.Label(top, text="Enter Event Details", font="Arial 14")
     date_label = tk.Label(top, text="Current Date Set: ", font="Arial 14")
     title_label = tk.Label(top, text="Title: ", font="Arial 14")
