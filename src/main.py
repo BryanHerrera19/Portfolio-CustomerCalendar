@@ -181,7 +181,6 @@ def event_list_window():
     else:
         no_event_label = tk.Label(event_window, text="No Events", font="arial 14 bold")
         no_event_label.place(x=135, y=200)
-    
 
 def study_timer():
     """Study Timer for User"""
