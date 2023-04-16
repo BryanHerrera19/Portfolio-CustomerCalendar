@@ -200,7 +200,7 @@ def study_timer():
         try:
             clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
         except ValueError:
-            print("Invalid Inputs")
+            messagebox.showinfo("Invalid Input(s)!!!", "Make Sure all Have Valid Inputs (Numerical)")
         while clock_Time > -1 :
             totalMinutes, totalSeconds = divmod(clock_Time, 60)
             totalHours = 0
@@ -236,5 +236,6 @@ tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", com
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
+
 update()
 win.mainloop()
