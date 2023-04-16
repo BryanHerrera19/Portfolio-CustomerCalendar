@@ -1,6 +1,7 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
+import time
 
 import tkinter as tk
 from datetime import date
@@ -180,38 +181,46 @@ def event_list_window():
         y_loc += 120
 
 def study_timer():
-    t = 0
-    def update_t(i1):
-        return i1 + int(entry_1.get())
-    def sub_1(i2):
-        return i2 - 1
-    def set_timer(t):
-        "sets timer"
-        t = update_t(t)
-        return t
-    def countdown(t):
-        """starts timer"""
-        input = t
-        if input>0:
-            display.config(text=input)
-            input = input - 1
-            display.after(1000, countdown)
-        elif input == 0:
-            print("end")
-            display.config(text = "Timer Ended")
-    root = tk.Toplevel(win)
-    root.geometry("180x150")
-    display = tk.Label(root, font = "times 20")
-    display.grid(row = 1, column = 2)
-    times = tk.StringVar()
-    entry_1 = tk.Entry(root, textvariable = times)
-    entry_1.grid(row=3, column=2)
-    b1 = tk.Button(root, text = "Set Time (seconds)", width = 20, command = lambda: set_timer(t))
-    b1.grid(row=4, column = 2, padx = 20)
-    b2 = tk.Button(root, text = "Start Timer", width = 20, command = lambda: countdown(set_timer(t)))
-    b2.grid(row = 6, column = 2, padx = 20)
+    tWindow = tk.Toplevel(win)
+    tWindow.title("Study Timer")
+    tWindow.geometry("500x500")
+    tWindow.configure(background = 'yellow')
+    # Variables
+    hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
+    # Input
+    secondEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = secondString)
+    minuteEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = minuteString)
+    hourEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = hourString)
+    # Entry Placement
+    secondEntry.place(x = 270, y = 180)
+    minuteEntry.place(x = 220, y = 180)
+    hourEntry.place(x = 170, y = 180)
+    # Def Run Timer Function
+    def runTimer():
+        """Runs the timer with exceptions"""
+        try:
+            clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
+        except ValueError:
+            print("Invalid Inputs")
+        while (clock_Time > -1 ):
+            totalMinutes, totalSeconds = divmod(clock_Time, 60)
+            totalHours = 0
+            if (totalMinutes > 60):
+                totalHours, totalMinutes = divmod(totalMinutes, 60)
+            hourString.set(f"{totalHours}")
+            minuteString.set(f"{totalMinutes}")
+            secondString.set(f"{totalSeconds}")
+            # Update Constantly
+            tWindow.update()
+            time.sleep(1)
+            if(clock_Time == 0):
+                messagebox.showinfo("Timer Has Finisehd!")
+            clock_Time -= 1
+    setTimeButton = tk.Button(tWindow, text = 'Set Time', bd = 5, command=runTimer)
+    setTimeButton.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-    root.mainloop()
+    tWindow.mainloop()
+
 # Labels
 DATE = tk.Label(win, text="Start", font="Arial 14")
 timeLabel = tk.Label(win, text="Start", font="Arial 14",
