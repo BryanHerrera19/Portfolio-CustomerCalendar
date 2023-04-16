@@ -12,6 +12,7 @@ from tkcalendar import DateEntry
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
 
+
 win = tk.Tk()
 win.geometry('1200x900')
 win.title("Magneton")
@@ -20,6 +21,8 @@ win.configure(background="white")
 change = True
 
 event_list = []
+
+t = 0
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
@@ -178,7 +181,35 @@ def event_list_window():
         event_description_label.place(x=x_loc, y=y_loc)
         y_loc += 120
 
+def study_timer():
+    def set_timer():
+        "sets timer"
+        global t
+        t = t + int(entry_1.get())
+        return t
+    def countdown():
+        """starts timer"""
+        global t
+        if t>0:
+            display.config(text=t)
+            t = t - 1
+            display.after(1000, countdown)
+        elif t == 0:
+            print("end")
+            display.config(text = "Timer Ended")
+    root = tk.Toplevel(win)
+    root.geometry("180x150")
+    display = tk.Label(root, font = "times 20")
+    display.grid(row = 1, column = 2)
+    times = tk.StringVar()
+    entry_1 = tk.Entry(root, textvariable = times)
+    entry_1.grid(row=3, column=2)
+    b1 = tk.Button(root, text = "Set Time (seconds)", width = 20, command = set_timer)
+    b1.grid(row=4, column = 2, padx = 20)
+    b2 = tk.Button(root, text = "Start Timer", width = 20, command = countdown)
+    b2.grid(row = 6, column = 2, padx = 20)
 
+    root.mainloop()
 # Labels
 DATE = tk.Label(win, text="Start", font="Arial 14")
 timeLabel = tk.Label(win, text="Start", font="Arial 14",
@@ -191,7 +222,7 @@ tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bo
                                                                                           side=tk.LEFT)
 tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=50,
                                                                                                      side=tk.LEFT)
-tk.Button(win, text="Study Timer", font="arial 14 bold").pack(pady=50, padx=50, side=tk.LEFT)
+tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
 update()
 win.mainloop()
