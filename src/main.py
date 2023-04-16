@@ -13,7 +13,6 @@ from tkcalendar import DateEntry
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
 
-
 win = tk.Tk()
 win.geometry('1200x900')
 win.title("Magneton")
@@ -38,6 +37,7 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
 cal.config(background="white")
 cal.pack(pady=20)
 # Buttons
+
 def create_event():
     '''Create event window for calendar'''
     # pylint: disable-msg=too-many-locals
@@ -157,26 +157,31 @@ def event_list_window():
     y_loc = 0
 
     # looping through events in list
-    for event in event_list:
-        event_string = "Event: " + event.getName()
-        date_string = "Date: " + str(event.getDay())
-        start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
-        description_string = "Description: \n" + event.getNotes()
-        # labels
-        event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
-        event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
-        event_time_label = tk.Label(event_window, text=start_time_string, font="arial 14")
-        event_description_label = tk.Label(event_window, text=description_string, font="arial 14", anchor='w',
+    if event_list:
+        for event in event_list:
+            event_string = "Event: " + event.getName()
+            date_string = "Date: " + str(event.getDay())
+            start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
+            description_string = "Description: \n" + event.getNotes()
+            # labels
+            event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
+            event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
+            event_time_label = tk.Label(event_window, text=start_time_string, font="arial 14")
+            event_description_label = tk.Label(event_window, text=description_string, font="arial 14", anchor='w',
                                            wraplength=360)
-        # label packing
-        event_string_label.place(x=x_loc, y=y_loc)
-        y_loc += 25
-        event_date_label.place(x=x_loc, y=y_loc)
-        y_loc += 25
-        event_time_label.place(x=x_loc, y=y_loc)
-        y_loc += 25
-        event_description_label.place(x=x_loc, y=y_loc)
-        y_loc += 120
+            # label packing
+            event_string_label.place(x=x_loc, y=y_loc)
+            y_loc += 25
+            event_date_label.place(x=x_loc, y=y_loc)
+            y_loc += 25
+            event_time_label.place(x=x_loc, y=y_loc)
+            y_loc += 25
+            event_description_label.place(x=x_loc, y=y_loc)
+            y_loc += 120
+    else:
+        no_event_label = tk.Label(event_window, text="No Events", font="arial 14 bold")
+        no_event_label.place(x=135, y=200)
+    
 
 def study_timer():
     """Study Timer for User"""

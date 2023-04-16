@@ -22,16 +22,19 @@ class Test(unittest.TestCase):
         hourString, minuteString, secondString = "1","45", "A0" #Inputted as 1:45:A0
         with self.assertRaises(ValueError):
             t = int(hourString)*3600 + int(minuteString)*60 + int(secondString)
+            print(t)
     def test_Timer_with_Missing_Input(self):
         """Test Case Should Run Properly"""
         hourString, minuteString, secondString = "","45", "23" #Inputted as :45:23
         with self.assertRaises(ValueError):
             t = int(hourString)*3600 + int(minuteString)*60 + int(secondString)
+            print(t)
     def test_Timer_with_Symbol_Input(self):
         """Test Case Should Run Properly"""
         hourString, minuteString, secondString = "1","%35", "23" #Inputted as 1:%35:23
         with self.assertRaises(ValueError):
             t = int(hourString)*3600 + int(minuteString)*60 + int(secondString)
+            print(t)
 
 
 if __name__ == '__main__':
