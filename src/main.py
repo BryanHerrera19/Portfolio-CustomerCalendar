@@ -181,6 +181,7 @@ def event_list_window():
         y_loc += 120
 
 def study_timer():
+    """Study Timer for User"""
     tWindow = tk.Toplevel(win)
     tWindow.title("Study Timer")
     tWindow.geometry("500x500")
@@ -202,10 +203,10 @@ def study_timer():
             clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
         except ValueError:
             print("Invalid Inputs")
-        while (clock_Time > -1 ):
+        while clock_Time > -1 :
             totalMinutes, totalSeconds = divmod(clock_Time, 60)
             totalHours = 0
-            if (totalMinutes > 60):
+            if totalMinutes > 60:
                 totalHours, totalMinutes = divmod(totalMinutes, 60)
             hourString.set(f"{totalHours}")
             minuteString.set(f"{totalMinutes}")
@@ -213,7 +214,7 @@ def study_timer():
             # Update Constantly
             tWindow.update()
             time.sleep(1)
-            if(clock_Time == 0):
+            if clock_Time == 0:
                 messagebox.showinfo("Timer", "Timer Has Finisehd!")
             clock_Time -= 1
     setTimeButton = tk.Button(tWindow, text = 'Set Time', bd = 5, command=runTimer)
