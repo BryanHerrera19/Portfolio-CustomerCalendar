@@ -155,7 +155,7 @@ def event_list_window():
     event_window = tk.Toplevel(win)
     event_window.geometry('360x640')
     event_window.title("Event List")
-    paste_event_list_labels(event_window)  
+    paste_event_list_labels(event_window)
 
 def study_timer():
     """Study Timer for User"""
@@ -220,6 +220,8 @@ def sort_event_window_labels_by_category(window):
 
 def paste_event_list_labels(window):
     '''Pastes events onto the event list window'''
+    # pylint: disable-msg=too-many-locals
+    # pylint: disable=too-many-statements
     x_loc = 0
     y_loc = 25
     if event_list:
