@@ -12,7 +12,7 @@ from tkcalendar import DateEntry
 
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
-from sort_dates import *
+from sort_dates import sort_by_date
 
 win = tk.Tk()
 win.geometry('1200x900')
@@ -158,6 +158,7 @@ def event_list_window():
     y_loc = 0
 
     # looping through events in list
+    sort_by_date(event_list)
     if event_list:
         for event in event_list:
             event_string = "Event: " + event.getName()
