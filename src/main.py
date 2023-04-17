@@ -12,6 +12,7 @@ from tkcalendar import DateEntry
 
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
+from sort_dates import *
 
 win = tk.Tk()
 win.geometry('1200x900')
@@ -162,11 +163,13 @@ def event_list_window():
             event_string = "Event: " + event.getName()
             date_string = "Date: " + str(event.getDay())
             start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
+            section_string = "Category: " + str(event.getCategory())
             description_string = "Description: \n" + event.getNotes()
             # labels
             event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
             event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
             event_time_label = tk.Label(event_window, text=start_time_string, font="arial 14")
+            event_section_label = tk.Label(event_window, text=section_string, font="arial 14")
             event_description_label = tk.Label(event_window, text=description_string, font="arial 14", anchor='w',
                                            wraplength=360)
             # label packing
@@ -176,6 +179,8 @@ def event_list_window():
             y_loc += 25
             event_time_label.place(x=x_loc, y=y_loc)
             y_loc += 25
+            event_section_label.place(x=x_loc, y=y_loc)
+            y_loc +=25
             event_description_label.place(x=x_loc, y=y_loc)
             y_loc += 120
     else:
