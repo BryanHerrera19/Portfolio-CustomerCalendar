@@ -152,11 +152,9 @@ def open_tips():
 
 def event_list_window():
     '''Creates a new window with a list of events'''
-    global event_window 
     event_window = tk.Toplevel(win)
     event_window.geometry('360x640')
     event_window.title("Event List")
-
     paste_event_list_labels(event_window)  
 
 def study_timer():
@@ -208,19 +206,19 @@ def destroy_list_labels():
     for label in event_window_labels:
         label.destroy()
 
-def sort_event_window_labels_by_date():
+def sort_event_window_labels_by_date(window):
     '''Sorts event list by date and pastes it to event window'''
     destroy_list_labels()
     sort_by_date(event_list)
-    paste_event_list_labels(event_window)
+    paste_event_list_labels(window)
 
-def sort_event_window_labels_by_category():
+def sort_event_window_labels_by_category(window):
     '''Sorts event list by category and pastes it to event window'''
     destroy_list_labels()
     sort_by_category(event_list)
-    paste_event_list_labels(event_window)
+    paste_event_list_labels(window)
 
-def paste_event_list_labels(event_window):
+def paste_event_list_labels(window):
     '''Pastes events onto the event list window'''
     x_loc = 0
     y_loc = 25
@@ -232,13 +230,13 @@ def paste_event_list_labels(event_window):
             section_string = "Category: " + str(event.getCategory())
             description_string = "Description: \n" + event.getNotes()
             # labels
-            event_string_label = tk.Label(event_window, text=event_string, font="arial 14 bold")
-            event_date_label = tk.Label(event_window, text=date_string, font="arial 14")
-            event_time_label = tk.Label(event_window, text=start_time_string, font="arial 14")
-            event_section_label = tk.Label(event_window, text=section_string, font="arial 14")
-            event_description_label = tk.Label(event_window, text=description_string, font="arial 14", anchor='w',
+            event_string_label = tk.Label(window, text=event_string, font="arial 14 bold")
+            event_date_label = tk.Label(window, text=date_string, font="arial 14")
+            event_time_label = tk.Label(window, text=start_time_string, font="arial 14")
+            event_section_label = tk.Label(window, text=section_string, font="arial 14")
+            event_description_label = tk.Label(window, text=description_string, font="arial 14", anchor='w',
                                            wraplength=360)
-            sort_by_label = tk.Label(event_window, text="Sort by: ", font="arial 14")
+            sort_by_label = tk.Label(window, text="Sort by: ", font="arial 14")
             # label packing
             event_string_label.place(x=x_loc, y=y_loc)
             y_loc += 25
@@ -258,12 +256,12 @@ def paste_event_list_labels(event_window):
             event_window_labels.append(event_section_label)
             event_window_labels.append(event_description_label)
             #button
-            date_button = tk.Button(event_window, text="Date", command=sort_event_window_labels_by_date)
-            category_button = tk.Button(event_window, text="Category/Class", command=sort_event_window_labels_by_category)
+            date_button = tk.Button(window, text="Date", command=lambda: sort_event_window_labels_by_date(window))
+            category_button = tk.Button(window, text="Category/Class", command=lambda: sort_event_window_labels_by_category(window))
             date_button.place(x=75, y=0)
             category_button.place(x=150, y=0)
     else:
-        no_event_label = tk.Label(event_window, text="No Events", font="arial 14 bold")
+        no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
         no_event_label.place(x=135, y=200)
 
 # Labels
