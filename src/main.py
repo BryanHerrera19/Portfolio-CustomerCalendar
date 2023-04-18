@@ -2,7 +2,6 @@
 # pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
 import time
-
 import tkinter as tk
 from datetime import date
 from tkinter import messagebox
@@ -52,10 +51,15 @@ def create_event():
         '''Set event on calendar and color it'''
         # save event info
         user_Notes = note.get(1.0, "end-1c")
-        save_start_time = start_hour_time.get() + ":" + start_minute_time.get() + " " + start_day.get()
-        save_end_time = end_hour_time.get() + ":" + end_minute_time.get() + " " + end_day.get()
+        save_start_time = start_hour_time.get() + ":" + start_minute_time.get()
+        save_end_time = end_hour_time.get() + ":" + end_minute_time.get()
+        global event_list
         event_list.append(
-            eventInfo(temp_cal.get_date(), save_start_time, save_end_time, title.get(), user_Notes, category.get()))
+            eventInfo(temp_cal.get_date(), save_start_time, start_day.get(), save_end_time, end_day.get(), title.get(),
+                      user_Notes, category.get()))
+        # Sort event_list by their category and start time (chronological order)
+        event_list.sort(key=lambda event: [event.category, event.day, event.start_time_day])
+        event_list = eventInfo.sortStartTime(eventInfo, event_list)
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
         cal.tag_config("Message", background="MediumPurple1", foreground="white")
@@ -228,7 +232,8 @@ def paste_event_list_labels(window):
         for event in event_list:
             event_string = "Event: " + event.getName()
             date_string = "Date: " + str(event.getDay())
-            start_time_string = "Time: " + str(event.getStartTime()) + " to " + str(event.getEndTime())
+            start_time_string = "Time: " + str(event.getStartTime()) + event.getStartTimeDay() + " to " \
+                                + str(event.getEndTime()) + event.end_time_day
             section_string = "Category: " + str(event.getCategory())
             description_string = "Description: \n" + event.getNotes()
             # labels
@@ -237,7 +242,7 @@ def paste_event_list_labels(window):
             event_time_label = tk.Label(window, text=start_time_string, font="arial 14")
             event_section_label = tk.Label(window, text=section_string, font="arial 14")
             event_description_label = tk.Label(window, text=description_string, font="arial 14", anchor='w',
-                                           wraplength=360)
+                                               wraplength=360)
             sort_by_label = tk.Label(window, text="Sort by: ", font="arial 14")
             # label packing
             event_string_label.place(x=x_loc, y=y_loc)

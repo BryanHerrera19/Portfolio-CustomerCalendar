@@ -6,10 +6,13 @@
 
 class Event:
     """Saves event date, time, title, and any notes"""
-    def __init__(self, day, start_time, end_time, name, notes, category):
+
+    def __init__(self, day, start_time, start_time_day, end_time, end_time_day, name, notes, category):
         self.day = day
         self.start_time = start_time
+        self.start_time_day = start_time_day
         self.end_time = end_time
+        self.end_time_day = end_time_day
         self.name = name
         self.notes = notes
         self.category = category
@@ -29,6 +32,14 @@ class Event:
     def getEndTime(self):
         """returns event end time"""
         return self.end_time
+
+    def getStartTimeDay(self):
+        """returns event start time AM or PM"""
+        return self.start_time_day
+
+    def getEndTimeDay(self):
+        """returns event end time AM or PM"""
+        return self.end_time_day
 
     def getDay(self):
         """returns event day"""
@@ -54,6 +65,14 @@ class Event:
         """changes event end time"""
         self.end_time = end_time
 
+    def setStartTimeDay(self, start_time_day):
+        """changes event start time AM or PM"""
+        self.start_time_day = start_time_day
+
+    def setEndTimeDay(self, end_time_day):
+        """changes event end time AM or PM"""
+        self.end_time_day = end_time_day
+
     def setDay(self, day):
         """changes event day"""
         self.day = day
@@ -61,3 +80,36 @@ class Event:
     def setCategory(self, category):
         """changes event category"""
         self.category = category
+
+    def sortStartTime(self, event_list):
+        events = event_list
+        category_event_list = []
+        sorted_event_list = []
+        if len(events) <= 1:
+            return events
+        for event, next_event in enumerate(events[:-1]):
+            if events[event].getCategory() != next_event.getCategory():
+                category_event_list.append(events[event])
+                sorted_event_list.extend(self.separateDayAndNightEvents(self, category_event_list))
+                category_event_list.clear()
+            category_event_list.append(events[event])
+        lastIndex = len(events) - 1
+        category_event_list.append(events[lastIndex])
+        sorted_event_list.extend(self.separateDayAndNightEvents(self, category_event_list))
+        return sorted_event_list
+
+    def separateDayAndNightEvents(self, category_list):
+        day_event_list = []
+        night_event_list = []
+        sorted_category_events = []
+
+        for event in category_list:
+            if event.getStartTimeDay() == "AM":
+                day_event_list.append(event)
+                day_event_list.sort(key=lambda current_event: current_event.getStartTime())
+            else:
+                night_event_list.append(event)
+                night_event_list.sort(key=lambda current_event: current_event.getStartTime())
+        sorted_category_events.extend(day_event_list)
+        sorted_category_events.extend(night_event_list)
+        return sorted_category_events
