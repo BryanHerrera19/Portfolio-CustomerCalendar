@@ -7,10 +7,11 @@
 import time
 import tkinter as tk
 from datetime import date
-from tkcalendar import Calendar
-from tkcalendar import DateEntry
 from tkinter import colorchooser
 from tkinter import messagebox
+from tkcalendar import Calendar
+from tkcalendar import DateEntry
+
 
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
