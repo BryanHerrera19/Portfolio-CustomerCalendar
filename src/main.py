@@ -6,13 +6,11 @@
 
 import time
 import tkinter as tk
-
 from datetime import date
-from tkinter import messagebox
-from tkinter import colorchooser
-
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
+from tkinter import colorchooser
+from tkinter import messagebox
 
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
@@ -101,7 +99,7 @@ def create_event():
     start_minute_time = tk.StringVar()
     start_minute_time.set("Minute")
     start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
-                                           "45", "50", "55", "60")
+                                           "45", "50", "55")
     end_day = tk.StringVar()
     end_day.set("AM/PM")
     end_day_drop = tk.OptionMenu(top, end_day, "AM", "PM")
@@ -118,6 +116,7 @@ def create_event():
     category.set("Category")
     category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
                                   "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
+
     # Color picker
     # do not uncomment this it will break the menu
     # color = tk.colorchooser()
@@ -125,11 +124,11 @@ def create_event():
     # color().set()
 
     # stores selected color
-    def color(): # pylint: disable=unused-argument
-        my_color = colorchooser.askcolor() # pylint: disable=unused-argument
+    def color():
+        # pylint: disable=unused-argument
+        my_color = colorchooser.askcolor()
 
-
-    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color) # pylint: disable=unused-argument
+    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)  # pylint: disable=unused-argument
 
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
