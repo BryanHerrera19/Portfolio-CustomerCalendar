@@ -2,7 +2,6 @@
 # pylint: disable=line-too-long
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
-
 # pylint: disable=missing-class-docstring
 
 import time
@@ -225,7 +224,7 @@ def study_timer():
             tWindow.update()
             time.sleep(1)
             if clock_Time == 0:
-                messagebox.showinfo("Timer", "Timer Has Finisehd!")
+                messagebox.showinfo("Timer", "Timer Has Finished!")
                 # To Close Timer
                 tWindow.destroy()
             clock_Time -= 1
@@ -318,6 +317,10 @@ tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", com
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
+
+
+
+
 
 update()
 win.mainloop()
