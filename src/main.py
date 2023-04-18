@@ -49,6 +49,7 @@ def create_event():
 
     def set_event():
         '''Set event on calendar and color it'''
+        # pylint: disable=global-statement
         # save event info
         user_Notes = note.get(1.0, "end-1c")
         save_start_time = start_hour_time.get() + ":" + start_minute_time.get()

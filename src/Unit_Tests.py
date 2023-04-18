@@ -13,6 +13,7 @@ class Test(unittest.TestCase):
     # Test Cases for Checking if Calendar Successfully saves Events"""
     def test_Save_A_New_Event_Should_Return_True(self):
         """Test Case should return True"""
+        # pylint: disable=too-many-function-args
         event_list = [eventInfo(eventInfo, date.today(), "1:00", "PM", "2:00PM", "Class 123", "Online", "ARTS")]
         self.assertEqual(f"{event_list[0].getName()}", "Class")
 
