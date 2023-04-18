@@ -2,6 +2,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-function-args
+# pylint: disable=missing-function-docstring
 """Class for holding event information"""
 
 
