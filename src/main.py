@@ -2,11 +2,11 @@
 # pylint: disable=line-too-long
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
-
 # pylint: disable=missing-class-docstring
 
 import time
 import tkinter as tk
+
 from datetime import date
 from tkinter import messagebox
 from tkinter import colorchooser
@@ -198,21 +198,24 @@ def study_timer():
 
     # Variables
     hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
+
     # Input
     secondEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = secondString)
     minuteEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = minuteString)
     hourEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = hourString)
+
     # Entry Placement
     secondEntry.place(x = 270, y = 180)
     minuteEntry.place(x = 220, y = 180)
     hourEntry.place(x = 170, y = 180)
+
     # Def Run Timer Function
     def runTimer():
         """Runs the timer with exceptions"""
         try:
             clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
         except ValueError:
-            messagebox.showinfo("Invalid Input(s)!!!", "Make Sure all Have Valid Inputs (Numerical)")
+            messagebox.showinfo("Invalid Input(s)!!!", "Please check if all inputs are valid (Numerical)")
         while clock_Time > -1 :
             totalMinutes, totalSeconds = divmod(clock_Time, 60)
             totalHours = 0
@@ -225,7 +228,7 @@ def study_timer():
             tWindow.update()
             time.sleep(1)
             if clock_Time == 0:
-                messagebox.showinfo("Timer", "Timer Has Finisehd!")
+                messagebox.showinfo("Timer", "Timer Has Finished!")
                 # To Close Timer
                 tWindow.destroy()
             clock_Time -= 1
@@ -318,6 +321,10 @@ tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", com
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
+
+
+
+
 
 update()
 win.mainloop()
