@@ -64,7 +64,7 @@ def create_event():
         event_list = eventInfo.sortStartTime(eventInfo, event_list)
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
-        cal.tag_config("Message", background="MediumPurple1", foreground="white")
+        cal.tag_config("Message", background="MediumPurple1", foreground="white") #change color here later
         top.destroy()
 
     # Label Declarations
@@ -74,7 +74,7 @@ def create_event():
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
     time_label = tk.Label(top, text="Time: ", font="Arial 14")
     category_label = tk.Label(top, text="Category: ", font="Arial 14")
-    color_label = tk.Label(top, text="Color: ", font="Arial 14")
+    color_label = tk.Label(top, text="Pick Color", font="Arial 14")
     start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     to_label = tk.Label(top, text="to", font="Arial 10")
@@ -112,7 +112,13 @@ def create_event():
     category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
                                   "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
     # Color picker
-    color_label = colorchooser.askcolor(title = "Choose Color")
+    #color = tk.colorchooser()
+    #color.set("Color")
+
+
+
+
+
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
     # Event note textbox
@@ -138,6 +144,11 @@ def create_event():
     category_label.place(x=50, y=250)
     category_drop.place(x=170, y=250)
 
+    #color_btn.place(x=280, y=250)
+
+
+
+
     note_label.place(x=50, y=300)
     note.place(x=170, y=300)
     submit_btn.place(x=250, y=420)
@@ -162,7 +173,7 @@ def open_tips():
 def event_list_window():
     '''Creates a new window with a list of events'''
     event_window = tk.Toplevel(win)
-    event_window.geometry('360x640')
+    event_window.geometry('460x640')
     event_window.title("Event List")
     paste_event_list_labels(event_window)
 
