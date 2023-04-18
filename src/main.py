@@ -3,6 +3,7 @@
 # pylint: disable=unused-argument
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
+
 # pylint: disable=missing-class-docstring
 
 import time
@@ -80,7 +81,6 @@ def create_event():
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
     time_label = tk.Label(top, text="Time: ", font="Arial 14")
     category_label = tk.Label(top, text="Category: ", font="Arial 14")
-    color_label = tk.Label(top, text="Pick Color", font="Arial 14")
     start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     to_label = tk.Label(top, text="to", font="Arial 10")
@@ -127,6 +127,7 @@ def create_event():
 
     # stores selected color
     def color():
+        # pylint: disable=unused-argument
         my_color = colorchooser.askcolor()
 
 
