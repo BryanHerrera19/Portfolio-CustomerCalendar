@@ -5,6 +5,7 @@ import time
 import tkinter as tk
 from datetime import date
 from tkinter import messagebox
+from tkinter import colorchooser
 
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
@@ -73,9 +74,10 @@ def create_event():
     note_label = tk.Label(top, text="Notes: ", font="Arial 14")
     time_label = tk.Label(top, text="Time: ", font="Arial 14")
     category_label = tk.Label(top, text="Category: ", font="Arial 14")
+    color_label = tk.Label(top, text="Color: ", font="Arial 14")
     start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
-    to_label = tk.Label(top, text="To", font="Arial 14")
+    to_label = tk.Label(top, text="to", font="Arial 10")
     date_selected = tk.StringVar()
     temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False, textvariables=date_selected)
     # Button Declarations
@@ -109,6 +111,8 @@ def create_event():
     category.set("Category")
     category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
                                   "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
+    # Color picker
+    color_label = colorchooser.askcolor(title = "Choose Color")
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
     # Event note textbox
