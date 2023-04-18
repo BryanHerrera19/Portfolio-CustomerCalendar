@@ -1,6 +1,7 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
 """ noinspection PyMissingOrEmptyDocstring"""
+
 import time
 import tkinter as tk
 from datetime import date
@@ -55,7 +56,9 @@ def create_event():
         user_Notes = note.get(1.0, "end-1c")
         save_start_time = start_hour_time.get() + ":" + start_minute_time.get()
         save_end_time = end_hour_time.get() + ":" + end_minute_time.get() + end_day.get()
+
         global event_list
+
         event_list.append(
             eventInfo(temp_cal.get_date(), save_start_time, start_day.get(), save_end_time, title.get(),
                       user_Notes, category.get()))
@@ -80,8 +83,10 @@ def create_event():
     to_label = tk.Label(top, text="to", font="Arial 10")
     date_selected = tk.StringVar()
     temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False, textvariables=date_selected)
+
     # Button Declarations
     submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
+
     # Drop down date and time setup
     temp_cal.set_date(cal.get_date())
     start_day = tk.StringVar()
@@ -114,13 +119,13 @@ def create_event():
     # Color picker
     #color = tk.colorchooser()
     #color.set("Color")
-    def color(): # stores selected color
+
+    # stores selected color
+    def color():
         my_color = colorchooser.askcolor()
 
+
     color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)
-
-
-
 
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
@@ -148,8 +153,6 @@ def create_event():
     category_drop.place(x=170, y=250)
 
     color_btn.place(x=280, y=252)
-
-
 
 
     note_label.place(x=50, y=300)
@@ -180,12 +183,14 @@ def event_list_window():
     event_window.title("Event List")
     paste_event_list_labels(event_window)
 
+"""Study Timer for User"""
 def study_timer():
-    """Study Timer for User"""
+
     tWindow = tk.Toplevel(win)
     tWindow.title("Study Timer")
     tWindow.geometry("500x500")
     tWindow.configure(background = 'yellow')
+
     # Variables
     hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
     # Input
@@ -255,6 +260,7 @@ def paste_event_list_labels(window):
                                 + str(event.getEndTime())
             section_string = "Category: " + str(event.getCategory())
             description_string = "Description: \n" + event.getNotes()
+
             # labels
             event_string_label = tk.Label(window, text=event_string, font="arial 14 bold")
             event_date_label = tk.Label(window, text=date_string, font="arial 14")
@@ -263,6 +269,7 @@ def paste_event_list_labels(window):
             event_description_label = tk.Label(window, text=description_string, font="arial 14", anchor='w',
                                                wraplength=360)
             sort_by_label = tk.Label(window, text="Sort by: ", font="arial 14")
+
             # label packing
             event_string_label.place(x=x_loc, y=y_loc)
             y_loc += 25
@@ -275,6 +282,7 @@ def paste_event_list_labels(window):
             event_description_label.place(x=x_loc, y=y_loc)
             y_loc += 120
             sort_by_label.place(x=0,y=0)
+
             #appending labels to list to easily destroy
             event_window_labels.append(event_string_label)
             event_window_labels.append(event_date_label)
@@ -296,6 +304,7 @@ timeLabel = tk.Label(win, text="Start", font="Arial 14",
                      bd=5, padx=10, pady=10)
 timeLabel.pack()
 DATE.pack()
+
 # Buttons
 tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold").pack(pady=50, padx=50, side=tk.LEFT)
 tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold").pack(pady=50, padx=50,
