@@ -211,7 +211,7 @@ def study_timer():
         try:
             clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
         except ValueError:
-            messagebox.showinfo("Invalid Input(s)!!!", "Make Sure all Have Valid Inputs (Numerical)")
+            messagebox.showinfo("Invalid Input(s)!!!", "Please check if all inputs are valid (Numerical)")
         while clock_Time > -1 :
             totalMinutes, totalSeconds = divmod(clock_Time, 60)
             totalHours = 0
