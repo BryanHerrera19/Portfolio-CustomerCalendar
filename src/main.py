@@ -114,10 +114,10 @@ def create_event():
     # Color picker
     #color = tk.colorchooser()
     #color.set("Color")
-    def color():
+    def color(): # stores selected color
         my_color = colorchooser.askcolor()
 
-    color_btn = tk.Button(top, text="Pick a Color", command=color)
+    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)
 
 
 
@@ -147,7 +147,7 @@ def create_event():
     category_label.place(x=50, y=250)
     category_drop.place(x=170, y=250)
 
-    color_btn.place(x=280, y=250)
+    color_btn.place(x=280, y=252)
 
 
 
