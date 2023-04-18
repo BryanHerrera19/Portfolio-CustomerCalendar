@@ -117,8 +117,10 @@ def create_event():
     category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
                                   "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
     # Color picker
-    #color = tk.colorchooser()
-    #color.set("Color")
+    # do not uncomment this it will break the menu
+    # color = tk.colorchooser()
+    # color.set("Color") vs
+    # color().set()
 
     # stores selected color
     def color():
