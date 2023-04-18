@@ -29,10 +29,16 @@ Added a window to display all events
 <img width="271" alt="image" src="https://user-images.githubusercontent.com/55124638/231898710-8fc21b1b-e265-4089-bd79-0f7d33d63a91.png">
 
 ## Sprint 3
-- Completed 6 Stories with 35 complexitiy points
-- Implemented:
-
-
-
-
+- Completed 8 Stories with 40 complexity points
+- Implemented:    
+Event category selection
+<img width="408" alt="image" src="https://user-images.githubusercontent.com/55124638/232838944-343e70c5-6dc1-4535-b0b3-2ee1c9ef8283.png">
+Study timer
+<img width="376" alt="image" src="https://user-images.githubusercontent.com/55124638/232838279-0aab4871-f174-489e-816a-bb6cc9027e5f.png">
+Sort Events by Date
+<img width="221" alt="image" src="https://user-images.githubusercontent.com/55124638/232839971-323d5912-6557-4100-a4f1-b9c5d8f9ea0a.png">
+Sort by Category
+<img width="215" alt="image" src="https://user-images.githubusercontent.com/55124638/232840103-69853d31-5b5a-48e6-ae4b-7ce56a7a7ead.png">
+Color picker menu
+<img width="338" alt="image" src="https://user-images.githubusercontent.com/55124638/232838674-39dcc377-156f-4c8e-8637-6071dd563914.png">
 
