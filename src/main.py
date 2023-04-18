@@ -1,6 +1,9 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
-""" noinspection PyMissingOrEmptyDocstring"""
+# pylint: disable=unused-argument
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
 
 import time
 import tkinter as tk
