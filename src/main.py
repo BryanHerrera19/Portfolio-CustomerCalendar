@@ -6,6 +6,7 @@
 
 import time
 import tkinter as tk
+
 from datetime import date
 from tkinter import messagebox
 from tkinter import colorchooser
@@ -197,14 +198,17 @@ def study_timer():
 
     # Variables
     hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
+
     # Input
     secondEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = secondString)
     minuteEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = minuteString)
     hourEntry = tk.Entry(tWindow, width = 3, font = "arial 14 bold", textvariable = hourString)
+
     # Entry Placement
     secondEntry.place(x = 270, y = 180)
     minuteEntry.place(x = 220, y = 180)
     hourEntry.place(x = 170, y = 180)
+
     # Def Run Timer Function
     def runTimer():
         """Runs the timer with exceptions"""
