@@ -8,7 +8,7 @@ Our [TechDebt](TechDebt.md) file.
 
 ## Sprint 1
 - Completed 7 stories with 39 complexity points     
-- Implemented:   
+- Implemented:
 Calendar
 <img width="963" alt="image" src="https://user-images.githubusercontent.com/55124638/230186993-6dbc3962-5b49-45ab-8424-ffcaa8b8819a.png">
 Ability to create new events
@@ -18,7 +18,7 @@ Calendar shows that a day has an event (highlighted in purple)
 
 ## Sprint 2
 - Completed 7 Stories with 33 complexity points
-- Implemented:    
+- Implemented:
 Edited Calendar page layout 
 <img width="903" alt="image" src="https://user-images.githubusercontent.com/55124638/231898227-0b44ffab-a1a7-46f2-9044-f3ac59f30aed.png">
 Added Study Tips
@@ -27,3 +27,12 @@ Added time when creating an event
 <img width="405" alt="image" src="https://user-images.githubusercontent.com/55124638/231898479-55beb7b8-ceba-45dd-a05f-e4cca3efd0f8.png">
 Added a window to display all events
 <img width="271" alt="image" src="https://user-images.githubusercontent.com/55124638/231898710-8fc21b1b-e265-4089-bd79-0f7d33d63a91.png">
+
+## Sprint 3
+- Completed 6 Stories with 35 complexitiy points
+- Implemented:
+
+
+
+
+
