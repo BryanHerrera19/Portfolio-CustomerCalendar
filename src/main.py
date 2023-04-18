@@ -52,10 +52,10 @@ def create_event():
         # save event info
         user_Notes = note.get(1.0, "end-1c")
         save_start_time = start_hour_time.get() + ":" + start_minute_time.get()
-        save_end_time = end_hour_time.get() + ":" + end_minute_time.get()
+        save_end_time = end_hour_time.get() + ":" + end_minute_time.get() + end_day.get()
         global event_list
         event_list.append(
-            eventInfo(temp_cal.get_date(), save_start_time, start_day.get(), save_end_time, end_day.get(), title.get(),
+            eventInfo(temp_cal.get_date(), save_start_time, start_day.get(), save_end_time, title.get(),
                       user_Notes, category.get()))
         # Sort event_list by their category and start time (chronological order)
         event_list.sort(key=lambda event: [event.category, event.day, event.start_time_day])
@@ -233,7 +233,7 @@ def paste_event_list_labels(window):
             event_string = "Event: " + event.getName()
             date_string = "Date: " + str(event.getDay())
             start_time_string = "Time: " + str(event.getStartTime()) + event.getStartTimeDay() + " to " \
-                                + str(event.getEndTime()) + event.end_time_day
+                                + str(event.getEndTime())
             section_string = "Category: " + str(event.getCategory())
             description_string = "Description: \n" + event.getNotes()
             # labels

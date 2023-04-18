@@ -7,12 +7,11 @@
 class Event:
     """Saves event date, time, title, and any notes"""
 
-    def __init__(self, day, start_time, start_time_day, end_time, end_time_day, name, notes, category):
+    def __init__(self, day, start_time, start_time_day, end_time, name, notes, category):
         self.day = day
         self.start_time = start_time
         self.start_time_day = start_time_day
         self.end_time = end_time
-        self.end_time_day = end_time_day
         self.name = name
         self.notes = notes
         self.category = category
@@ -36,10 +35,6 @@ class Event:
     def getStartTimeDay(self):
         """returns event start time AM or PM"""
         return self.start_time_day
-
-    def getEndTimeDay(self):
-        """returns event end time AM or PM"""
-        return self.end_time_day
 
     def getDay(self):
         """returns event day"""
@@ -69,10 +64,6 @@ class Event:
         """changes event start time AM or PM"""
         self.start_time_day = start_time_day
 
-    def setEndTimeDay(self, end_time_day):
-        """changes event end time AM or PM"""
-        self.end_time_day = end_time_day
-
     def setDay(self, day):
         """changes event day"""
         self.day = day
@@ -82,6 +73,9 @@ class Event:
         self.category = category
 
     def sortStartTime(self, event_list):
+        """Split event_list into category lists to sort them using their start time within each category
+         that returns a single sorted list"""
+
         events = event_list
         category_event_list = []
         sorted_event_list = []
@@ -99,6 +93,8 @@ class Event:
         return sorted_event_list
 
     def separateDayAndNightEvents(self, category_list):
+        """Split category lists into AM and PM lists and then combine it into one sorted list"""
+
         day_event_list = []
         night_event_list = []
         sorted_category_events = []
