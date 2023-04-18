@@ -126,10 +126,10 @@ def create_event():
 
     # stores selected color
     def color(): # pylint: disable=unused-argument
-        my_color = colorchooser.askcolor()
+        my_color = colorchooser.askcolor() # pylint: disable=unused-argument
 
 
-    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)
+    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color) # pylint: disable=unused-argument
 
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
