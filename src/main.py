@@ -125,6 +125,7 @@ def create_event():
 
     # stores selected color
     def color():
+        """Holds user choosen color"""
         # pylint: disable=unused-variable
         my_color = colorchooser.askcolor()
 
