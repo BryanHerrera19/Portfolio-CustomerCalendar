@@ -1,6 +1,5 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
-# pylint: disable=unused-argument
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
 
@@ -126,8 +125,7 @@ def create_event():
     # color().set()
 
     # stores selected color
-    def color():
-        # pylint: disable=unused-argument
+    def color(): # pylint: disable=unused-argument
         my_color = colorchooser.askcolor()
 
 
@@ -182,6 +180,7 @@ def open_tips():
         tip_string += (line + "\n")
     messagebox.showinfo("Tips", tip_string)
 
+
 def event_list_window():
     '''Creates a new window with a list of events'''
     event_window = tk.Toplevel(win)
@@ -189,9 +188,9 @@ def event_list_window():
     event_window.title("Event List")
     paste_event_list_labels(event_window)
 
-"""Study Timer for User"""
-def study_timer():
 
+def study_timer():
+    """Study Timer for User"""
     tWindow = tk.Toplevel(win)
     tWindow.title("Study Timer")
     tWindow.geometry("500x500")
