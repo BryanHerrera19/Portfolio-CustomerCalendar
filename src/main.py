@@ -110,7 +110,7 @@ def create_event():
     end_minute_time = tk.StringVar()
     end_minute_time.set("Minute")
     end_minute_time_drop = tk.OptionMenu(top, end_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
-                                         "45", "50", "55", "60")
+                                         "45", "50", "55")
 
     category = tk.StringVar()
     category.set("Category")
@@ -125,7 +125,7 @@ def create_event():
 
     # stores selected color
     def color():
-        # pylint: disable=unused-argument
+        # pylint: disable=unused-variable
         my_color = colorchooser.askcolor()
 
     color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)  # pylint: disable=unused-argument
