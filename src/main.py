@@ -3,6 +3,7 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
+# pylint: disable=wrong-import-order
 
 import time
 import tkinter as tk
