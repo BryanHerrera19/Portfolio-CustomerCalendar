@@ -7,11 +7,10 @@
 import time
 import tkinter as tk
 from datetime import date
-from tkinter import colorchooser
-from tkinter import messagebox
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
-
+from tkinter import colorchooser
+from tkinter import messagebox
 
 import time_help_functions as t1
 from Event_Info import Event as eventInfo
@@ -69,8 +68,14 @@ def create_event():
         event_list = eventInfo.sortStartTime(eventInfo, event_list)
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
-        cal.tag_config("Message", background="MediumPurple1", foreground="white") #change color here later
+        cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
         top.destroy()
+
+    def change_category_color(choice):
+        """Change dropdown color for category selection"""
+        category_Index = list_of_categories.index(choice)
+        color_choosen = colors[category_Index]
+        category_drop.config(bg=color_choosen, activebackground=color_choosen)
 
     # Label Declarations
     main_label = tk.Label(top, text="Enter Event Details", font="Arial 14")
@@ -81,42 +86,63 @@ def create_event():
     category_label = tk.Label(top, text="Category: ", font="Arial 14")
     start_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
     end_time_colon_label = tk.Label(top, text=" : ", font="Arial 16")
-    to_label = tk.Label(top, text="to", font="Arial 10")
+    to_label = tk.Label(top, text="to", font="Arial 14")
     date_selected = tk.StringVar()
     temp_cal = DateEntry(top, selectmode='day', showweeknumbers=False, textvariables=date_selected)
 
     # Button Declarations
     submit_btn = tk.Button(top, text="Submit", font="Arial 14", command=set_event)
+    submit_btn.config(bg="light goldenrod", activebackground="goldenrod")
 
     # Drop down date and time setup
     temp_cal.set_date(cal.get_date())
     start_day = tk.StringVar()
-    start_day.set("AM/PM")
+    start_day.set("AM")
     start_day_drop = tk.OptionMenu(top, start_day, "AM", "PM")
+    start_day_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    start_day_drop["menu"].config(bg='lemon chiffon')
     start_hour_time = tk.StringVar()
-    start_hour_time.set("Hour")
+    start_hour_time.set("8")
     start_hour_time_drop = tk.OptionMenu(top, start_hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
                                          "12")
+    start_hour_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    start_hour_time_drop["menu"].config(bg='lemon chiffon')
     start_minute_time = tk.StringVar()
-    start_minute_time.set("Minute")
+    start_minute_time.set("00")
     start_minute_time_drop = tk.OptionMenu(top, start_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
                                            "45", "50", "55")
+    start_minute_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    start_minute_time_drop["menu"].config(bg='lemon chiffon')
+
     end_day = tk.StringVar()
-    end_day.set("AM/PM")
+    end_day.set("AM")
     end_day_drop = tk.OptionMenu(top, end_day, "AM", "PM")
+    end_day_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    end_day_drop["menu"].config(bg='lemon chiffon')
     end_hour_time = tk.StringVar()
-    end_hour_time.set("Hour")
+    end_hour_time.set("9")
     end_hour_time_drop = tk.OptionMenu(top, end_hour_time, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
                                        "12")
+    end_hour_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    end_hour_time_drop["menu"].config(bg='lemon chiffon')
     end_minute_time = tk.StringVar()
-    end_minute_time.set("Minute")
+    end_minute_time.set("00")
     end_minute_time_drop = tk.OptionMenu(top, end_minute_time, "00", "05", "10", "15", "20", "25", "30", "35", "40",
                                          "45", "50", "55")
+    end_minute_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    end_minute_time_drop["menu"].config(bg='lemon chiffon')
+
+    list_of_categories = ["ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
+                          "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA"]
+    colors = ['dark orange', 'aquamarine', 'lime green', 'dark cyan', 'dodger blue', 'Spring Green', 'PaleGreen3'
+        , 'Olive Drab', 'LightSteelBlue3', 'sienna3', 'Tomato', 'Gold', 'Indian Red', 'LightGoldenrod2'
+        , 'Salmon3', 'MediumPurple2']
 
     category = tk.StringVar()
-    category.set("Category")
-    category_drop = tk.OptionMenu(top, category, "ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
-                                  "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA")
+    category_drop = tk.OptionMenu(top, category, *list_of_categories, command=change_category_color)
+
+    category_drop.config(bg="peach puff", activebackground="peach puff")
+    category_drop["menu"].config(bg='peach puff')
 
     # Color picker
     # do not uncomment this it will break the menu
