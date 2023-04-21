@@ -212,7 +212,7 @@ def open_tips():
 def event_list_window():
     '''Creates a new window with a list of events'''
     event_window = tk.Toplevel(win)
-    event_window.geometry('460x640')
+    event_window.geometry('470x640')
     event_window.title("Event List")
     paste_event_list_labels(event_window)
 
@@ -222,7 +222,7 @@ def study_timer():
     tWindow = tk.Toplevel(win)
     tWindow.title("Study Timer")
     tWindow.geometry("500x500")
-    tWindow.configure(background = 'yellow')
+    tWindow.configure(background='burlywood1')
 
     # Variables
     hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
@@ -286,6 +286,11 @@ def paste_event_list_labels(window):
     '''Pastes events onto the event list window'''
     # pylint: disable-msg=too-many-locals
     # pylint: disable=too-many-statements
+
+    # Scrollbar only connects to ListBox
+    # scrollbar = tk.Scrollbar(window)
+    # scrollbar.pack(side=tk.RIGHT, fill=tk.Y, command=event_list.yview)
+
     x_loc = 0
     y_loc = 25
     if event_list:
@@ -349,10 +354,6 @@ tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", com
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
-
-
-
-
 
 update()
 win.mainloop()
