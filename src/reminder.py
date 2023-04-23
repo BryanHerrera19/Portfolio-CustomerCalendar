@@ -4,7 +4,8 @@
 
 import datetime as DT
 
-class reminder:
+class Reminder:
+    """Reminder Class used to Remind the User of when a Event is Prior to it occuring"""
     def __init__(self):
         """Initializing what reminders are turned on"""
         self.week = False
