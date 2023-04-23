@@ -32,7 +32,6 @@ class Reminder:
     def getHour(self):
         """Gets Current Hour Boolean"""
         return self.hour
-    
     def weekBefore(self, event):
         """Checks if today is a week before event """
         today = DT.datetime.today()
@@ -76,7 +75,7 @@ class Reminder:
         i = 0
         for value in lis:
             string += lis1[i]
-            if value == True:
+            if value:
                 string += "ON"
             else:
                 string += "OFF"

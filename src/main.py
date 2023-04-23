@@ -8,7 +8,6 @@
 import time
 import tkinter as tk
 from datetime import date
-from datetime import timedelta
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 from tkinter import colorchooser
@@ -202,7 +201,7 @@ def update():
     current_time = t1.get_time()
     timeLabel["text"] = f"Time: {current_time}"
     for event in event_list:
-        if (reminder.upcomingEvent(event)):
+        if reminder.upcomingEvent(event):
             messagebox.showinfo("Upcoming Event!", f"{event.getName} will begin at {event.getStartTime} {event.getStartTimeDay} on {event.Day}")
     DATE.after(1000, update)
 
@@ -235,18 +234,12 @@ def reminder_window():
         reminder.setWeek(not reminder.getWeek())
         Status_Label["text"] = f"Status: {reminder.status()}"
         print(reminder.status())
-        
     def dayBeforeReminder():
         reminder.setDay(not reminder.getDay())
         Status_Label["text"] = f"Status: {reminder.status()}"
-        
     def hourReminder():
         reminder.setHour(not reminder.getHour())
-        Status_Label["text"] = f"Status: {reminder.status()}"
-        
-
-
-
+        Status_Label["text"] = f"Status: {reminder.status()}"        
     # Label Declarations
     Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn ON/OFF Reminders", font="Arial 14")
     Status_Label = tk.Label(sWindow, text = f"Status: {reminder.status()}", font = "Arial 14")
