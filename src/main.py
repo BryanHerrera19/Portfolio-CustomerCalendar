@@ -201,6 +201,9 @@ def update():
     DATE["text"] = f"Current Day: {TODAY}"
     current_time = t1.get_time()
     timeLabel["text"] = f"Time: {current_time}"
+    for event in event_list:
+        if (reminder.upcomingEvent(event)):
+            messagebox.showinfo("Upcoming Event!", f"{event.getName} will begin at {event.getStartTime} {event.getStartTimeDay} on {event.Day}")
     DATE.after(1000, update)
 
 def open_tips():
@@ -224,17 +227,36 @@ def reminder_window():
     """Creates a Reminder Menu"""
     sWindow = tk.Toplevel(win)
     sWindow.title("Reminder")
-    sWindow.geometry("500x500")
+    sWindow.geometry("800x500")
     sWindow.configure(background='burlywood1')
+    # Update Reminder
+    def weeklyReminder():
+        print(reminder.status())
+        reminder.setWeek(not reminder.getWeek())
+        Status_Label["text"] = f"Status: {reminder.status()}"
+        print(reminder.status())
+        
+    def dayBeforeReminder():
+        reminder.setDay(not reminder.getDay())
+        Status_Label["text"] = f"Status: {reminder.status()}"
+        
+    def hourReminder():
+        reminder.setHour(not reminder.getHour())
+        Status_Label["text"] = f"Status: {reminder.status()}"
+        
+
+
 
     # Label Declarations
-    Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn on Reminders", font="Arial 14")
-    Instruction_Label.place(x = 50, y = 50)
-    
+    Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn ON/OFF Reminders", font="Arial 14")
     Status_Label = tk.Label(sWindow, text = f"Status: {reminder.status()}", font = "Arial 14")
-    tk.Button(sWindow, text="Weekly", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
-    tk.Button(sWindow, text="Day", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
-    tk.Button(sWindow, text="Hour", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
+
+    # Label Placement
+    Instruction_Label.place(x = 50, y = 50)
+    Status_Label.place(x = 50, y = 80)
+    tk.Button(sWindow, text="Weekly", font = "arial 14 bold", command = weeklyReminder).pack(pady=50, padx=50, side = tk.LEFT)
+    tk.Button(sWindow, text="Day", font = "arial 14 bold", command = dayBeforeReminder).pack(pady=50, padx=50, side = tk.LEFT)
+    tk.Button(sWindow, text="Hour", font = "arial 14 bold", command = hourReminder).pack(pady=50, padx=50, side = tk.LEFT)
 
 
 
