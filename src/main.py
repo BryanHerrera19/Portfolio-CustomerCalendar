@@ -8,6 +8,7 @@
 import time
 import tkinter as tk
 from datetime import date
+from datetime import timedelta
 from tkcalendar import Calendar
 from tkcalendar import DateEntry
 from tkinter import colorchooser
