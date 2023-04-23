@@ -23,7 +23,6 @@ class Reminder:
         self.hour = TF
     def weekBefore(self, event):
         """Checks if today is a week before event """
-        
         today = DT.datetime.today()
         week_before = event.getDay() - DT.timedelta(days = 7)
         if today == week_before:
@@ -52,8 +51,14 @@ class Reminder:
         if self.hour:
             return self.hourBefore(event)
         return False
-
-
-
-
-
+    def status(self):
+        """Return Status of Reminder"""
+        string = ""
+        lis = [self.week, self.day, self.day]
+        for value in lis:
+            if lis == True:
+                string += "ON"
+            else:
+                string += "OFF"
+            string += " "
+        return string

@@ -15,6 +15,7 @@ from tkinter import colorchooser
 from tkinter import messagebox
 
 import time_help_functions as t1
+import Reminder as R
 from Event_Info import Event as eventInfo
 from sort_dates import sort_by_date, sort_by_category
 
@@ -27,6 +28,8 @@ change = True
 
 event_list = []
 event_window_labels = []
+
+reminder = R.Reminder()
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
                locale="en_US",
@@ -217,6 +220,23 @@ def event_list_window():
     event_window.title("Event List")
     paste_event_list_labels(event_window)
 
+def reminder_window():
+    """Creates a Reminder Menu"""
+    sWindow = tk.Toplevel(win)
+    sWindow.title("Reminder")
+    sWindow.geometry("500x500")
+    sWindow.configure(background='burlywood1')
+
+    # Label Declarations
+    Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn on Reminders", font="Arial 14")
+    Instruction_Label.place(x = 50, y = 50)
+    
+    Status_Label = tk.Label(sWindow, text = f"Status: {reminder.status()}", font = "Arial 14")
+    tk.Button(sWindow, text="Weekly", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
+    tk.Button(sWindow, text="Day", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
+    tk.Button(sWindow, text="Hour", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=50, side = tk.LEFT)
+
+
 
 def study_timer():
     """Study Timer for User"""
@@ -354,6 +374,7 @@ tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bo
 tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=50,
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
+tk.Button(win, text="Reminders", font = "arial 14 bold", command = reminder_window).pack(pady=5, padx=5, side = tk.LEFT)
 cal.pack(fill="both", expand=True)
 
 update()
