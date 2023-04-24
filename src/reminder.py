@@ -67,10 +67,10 @@ class Reminder:
 
     def upcomingEvent(self, event):
         """Checks if event is upcoming"""
-        print("Today", dt.datetime.today(), "\n")
-        print("Week", event.getDay() - dt.timedelta(days=7), "\n")
-        print("Day", event.getDay() - dt.timedelta(days=1), "\n")
-        print("hour before", event.getDay() - dt.timedelta(hours=1), "\n")
+        # print("Today", dt.datetime.today(), "\n")
+        # print("Week", event.getDay() - dt.timedelta(days=7), "\n")
+        # print("Day", event.getDay() - dt.timedelta(days=1), "\n")
+        # print("hour before", event.getDay() - dt.timedelta(hours=1), "\n")
 
         if self.week:
             return self.weekBefore(event)
