@@ -306,7 +306,8 @@ def study_timer():
     tWindow.mainloop()
 
 
-def remove_event_window():
+def remove_event():
+    # pylint: disable-msg=too-many-locals
     '''Creates a new window to remove an event'''
     remove_event_window = tk.Toplevel(win)
     remove_event_window.geometry('520x400')
@@ -327,7 +328,7 @@ def remove_event_window():
                 event = event_list[i]
                 # add to a new event list with events of the same name
 
-        if event == None:
+        if event is None:
             msg_label.config(text=msg_string)
         else:
             event_list.remove(event)
@@ -453,7 +454,7 @@ def paste_event_list_labels(window):
                                         command=lambda: sort_event_window_labels_by_category(window))
             date_button.place(x=75, y=5)
             category_button.place(x=150, y=5)
-            remove_button = tk.Button(window, text="Remove Event", command=remove_event_window)
+            remove_button = tk.Button(window, text="Remove Event", command=remove_event)
             remove_button.place(x=300, y=5)
     else:
         no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
