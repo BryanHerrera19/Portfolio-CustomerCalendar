@@ -14,8 +14,8 @@ from tkinter import colorchooser
 from tkinter import messagebox
 
 import time_help_functions as t1
-import Reminder as R
 from Event_Info import Event as eventInfo
+from reminder import Reminder as R
 from sort_dates import sort_by_date, sort_by_category
 
 win = tk.Tk()
@@ -239,7 +239,7 @@ def reminder_window():
         Status_Label["text"] = f"Status: {reminder.status()}"
     def hourReminder():
         reminder.setHour(not reminder.getHour())
-        Status_Label["text"] = f"Status: {reminder.status()}"     
+        Status_Label["text"] = f"Status: {reminder.status()}"
     # Label Declarations
     Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn ON/OFF Reminders", font="Arial 14")
     Status_Label = tk.Label(sWindow, text = f"Status: {reminder.status()}", font = "Arial 14")
