@@ -14,7 +14,7 @@ from tkinter import colorchooser
 from tkinter import messagebox
 
 import time_help_functions as t1
-import Reminder as R
+import reminder as R
 from Event_Info import Event as eventInfo
 from sort_dates import sort_by_date, sort_by_category
 
@@ -221,6 +221,8 @@ def event_list_window():
     event_window.geometry('470x640')
     event_window.title("Event List")
     paste_event_list_labels(event_window)
+    for x in event_list:
+        print(vars(x))
 
 def reminder_window():
     """Creates a Reminder Menu"""
@@ -383,13 +385,14 @@ timeLabel.pack()
 DATE.pack()
 
 # Buttons
-tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold").pack(pady=50, padx=50, side=tk.LEFT)
-tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold").pack(pady=50, padx=50,
+tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold").pack(pady=50, padx=30, side=tk.LEFT)
+tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold").pack(pady=50, padx=15,
                                                                                           side=tk.LEFT)
-tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=50,
+tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=15,
                                                                                                      side=tk.LEFT)
-tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=50, side=tk.LEFT)
-tk.Button(win, text="Reminders", font = "arial 14 bold", command = reminder_window).pack(pady=5, padx=5, side = tk.LEFT)
+tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=15, side=tk.LEFT)
+tk.Button(win, text="Reminders", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=15, side = tk.LEFT)
+tk.Button(win, text="Save", font="arial 14 bold",).pack(pady=50,padx=15, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
 
 update()
