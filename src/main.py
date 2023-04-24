@@ -19,6 +19,7 @@ import reminder as R
 from Event_Info import Event as eventInfo
 from reminder import Reminder as R
 from sort_dates import sort_by_date, sort_by_category
+from file_io import *
 
 win = tk.Tk()
 win.geometry('1200x900')
@@ -308,6 +309,7 @@ def study_timer():
 
 def remove_event():
     # pylint: disable-msg=too-many-locals
+    # pylint: disable-msg=consider-using-enumerate
     '''Creates a new window to remove an event'''
     remove_event_window = tk.Toplevel(win)
     remove_event_window.geometry('520x400')
@@ -315,7 +317,7 @@ def remove_event():
 
     def remove_event_button():
         '''Shows user event info and deletes said event'''
-        global event_list
+        event_list
         event = None
         msg_string = f"Event title({event_title.get()}) was not found"
         msg_label = tk.Label(remove_event_window, text=msg_string, font="arial 14 bold", wraplength=390)
@@ -459,6 +461,10 @@ def paste_event_list_labels(window):
     else:
         no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
         no_event_label.place(x=135, y=200)
+    
+def save_events():
+    saved_events_list = event_list_to_dictionary(event_list)
+    dictionary_list_to_file(saved_events_list)
 
 
 # Labels
@@ -476,7 +482,7 @@ tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", com
                                                                                                      side=tk.LEFT)
 tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=15, side=tk.LEFT)
 tk.Button(win, text="Reminders", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=15, side = tk.LEFT)
-tk.Button(win, text="Save", font="arial 14 bold",).pack(pady=50,padx=15, side=tk.LEFT)
+tk.Button(win, text="Save", font="arial 14 bold", command= save_events).pack(pady=50,padx=15, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
 
 update()

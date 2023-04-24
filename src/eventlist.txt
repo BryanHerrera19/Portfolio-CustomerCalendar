@@ -1,0 +1,9 @@
+{
+    "category": "COMP",
+    "day": "2023-04-24",
+    "end_time": "9:00AM",
+    "name": "test event",
+    "notes": "save to file",
+    "start_time": "8:00",
+    "start_time_day": "AM"
+}
