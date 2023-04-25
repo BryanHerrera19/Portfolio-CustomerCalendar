@@ -1,3 +1,5 @@
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
 '''Handles file io for our calendar'''
 
 import json
@@ -13,7 +15,7 @@ def event_list_to_dictionary(event_list):
 
 def dictionary_list_to_file(saved_events):
     '''Saves dictionary to file'''
-    with open('./src/eventlist.txt', 'w') as file_write:
+    with open('./src/eventlist.txt', 'w', encoding = 'utf-8') as file_write:
         for event in saved_events:
             file_write.write(json.dumps(event, indent=4, sort_keys=True, default=str))
     return True
@@ -21,10 +23,10 @@ def dictionary_list_to_file(saved_events):
 def file_to_event_list():
     '''Reads dictionary from file'''
     loaded_dict_list = []
-    with open('./src/eventlist.txt') as file_read:
+    with open('./src/eventlist.txt', 'r', encoding = 'utf-8') as file_read:
         data = file_read.read()
-        js = json.loads(data)
-        loaded_dict_list.append(js)
+        js_data = json.loads(data)
+        loaded_dict_list.append(js_data)
     return dictionary_to_event_list(loaded_dict_list)
 
 def dictionary_to_event_list(loaded_dict_list):

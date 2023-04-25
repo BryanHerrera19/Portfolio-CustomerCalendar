@@ -4,6 +4,9 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=global-statement
+#pylint: disable=wildcard-import
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
 
 import time
 import tkinter as tk
@@ -319,7 +322,6 @@ def remove_event():
 
     def remove_event_button():
         '''Shows user event info and deletes said event'''
-        event_list
         event = None
         msg_string = f"Event title({event_title.get()}) was not found"
         msg_label = tk.Label(remove_event_window, text=msg_string, font="arial 14 bold", wraplength=390)
@@ -463,7 +465,7 @@ def paste_event_list_labels(window):
     else:
         no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
         no_event_label.place(x=135, y=200)
-    
+
 def save_events():
     saved_events_list = event_list_to_dictionary(event_list)
     dictionary_list_to_file(saved_events_list)
