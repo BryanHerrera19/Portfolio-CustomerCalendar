@@ -32,6 +32,8 @@ event_list = []
 event_window_labels = []
 remove_event_labels = []
 
+event_list = file_to_event_list()
+
 reminder = R()
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
