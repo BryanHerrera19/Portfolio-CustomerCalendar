@@ -3,7 +3,9 @@
 '''Handles file io for our calendar'''
 
 import json
+
 from Event_Info import Event as eventInfo
+
 
 def event_list_to_dictionary(event_list):
     '''Function to save events to a list of dictionaries for easy file io'''
@@ -23,7 +25,7 @@ def dictionary_list_to_file(saved_events):
 def file_to_event_list():
     '''Reads dictionary from file'''
     loaded_dict_list = []
-    with open('./src/eventlist.txt', 'r', encoding = 'utf-8') as file_read:
+    with open('eventlist.txt', 'r', encoding='utf-8') as file_read:
         data = file_read.read()
         js_data = json.loads(data)
         loaded_dict_list.append(js_data)
