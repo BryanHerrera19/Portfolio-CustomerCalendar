@@ -3,10 +3,15 @@
 Our [TechDebt](TechDebt.md) file.
 
 ## Our Product
-- We are creating a time manangment and study tool that helps students with procrastination
+- We are creating a time manangment and study tool cakendar that helps students with procrastination
 - This product will be written in python
 
-## Sprint 1
+## How to Download App:    
+- N/A
+
+
+## Features:
+### Sprint 1
 - Completed 7 stories with 39 complexity points     
 - Implemented:
 Calendar
@@ -16,7 +21,7 @@ Ability to create new events
 Calendar shows that a day has an event (highlighted in purple)
 <img width="955" alt="image" src="https://user-images.githubusercontent.com/55124638/230187301-f8c887d8-4004-45ea-b038-e787ca68cdcf.png">
 
-## Sprint 2
+### Sprint 2
 - Completed 7 Stories with 33 complexity points
 - Implemented:
 Edited Calendar page layout 
@@ -28,7 +33,7 @@ Added time when creating an event
 Added a window to display all events
 <img width="271" alt="image" src="https://user-images.githubusercontent.com/55124638/231898710-8fc21b1b-e265-4089-bd79-0f7d33d63a91.png">
 
-## Sprint 3
+### Sprint 3
 - Completed 8 Stories with 40 complexity points
 - Implemented:    
 Event category selection
@@ -42,3 +47,11 @@ Sort by Category
 Color picker menu
 <img width="338" alt="image" src="https://user-images.githubusercontent.com/55124638/232838674-39dcc377-156f-4c8e-8637-6071dd563914.png">
 
+### Sprint 4
+- Completed _ stories with __ complexity points
+- Implemented:      
+
+
+## For More Info    
+- [Customer Notes](customerNotes.md)
+- [Traditional Report](TraditionalReport.md)
