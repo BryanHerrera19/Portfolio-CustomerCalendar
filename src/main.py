@@ -102,12 +102,14 @@ def create_event():
         cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
         top.destroy()
 
-    def add_category():
+    def add_remove_category():
+        """Add or Remove categories from list_of_categories"""
         Category_win = tk.Toplevel(win)
         Category_win.geometry('500x200')
         Category_win.title("Adding/Removing a Category")
 
         def add_button():
+            """Add new category to list_of_categories"""
             global list_of_categories
             list_of_categories.insert(len(list_of_categories) - 1, category_title.get())
             msg_label = tk.Label(Category_win, text=f"Category({category_title.get()}) has been added",
@@ -115,6 +117,7 @@ def create_event():
             msg_label.place(x=25, y=90)
 
         def remove_button():
+            """Remove category from list_of_categories"""
             global list_of_categories
             name = None
             msg_string = ""
@@ -146,7 +149,7 @@ def create_event():
     def change_category_color(choice):
         """Change dropdown color for category selection"""
         if choice == "Add/Remove Category":
-            add_category()
+            add_remove_category()
         category_Index = list_of_categories.index(choice)
         color_choosen = category_colors[category_Index]
         category_drop.config(bg=color_choosen, activebackground=color_choosen)
