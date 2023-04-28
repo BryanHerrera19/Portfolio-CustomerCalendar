@@ -18,11 +18,9 @@ from tkcalendar import Calendar
 from tkcalendar import DateEntry
 
 import time_help_functions as t1
-import reminder as R
-from Event_Info import Event as eventInfo
+from file_io import *
 from reminder import Reminder as R
 from sort_dates import sort_by_date, sort_by_category
-from file_io import *
 
 win = tk.Tk()
 win.geometry('1200x900')
@@ -33,7 +31,28 @@ change = True
 
 event_list = []
 event_window_labels = []
-remove_event_labels = []
+remove_labels = []
+list_of_categories = []
+
+# initialize list_of_categories with school subjects
+# can remove after it can be saveda and loaded from a txt file
+list_of_categories.append("ARTS")
+list_of_categories.append("BIOL")
+list_of_categories.append("CHEM")
+list_of_categories.append("COMM")
+list_of_categories.append("COMP")
+list_of_categories.append("ECON")
+list_of_categories.append("EDUC")
+list_of_categories.append("ENGL")
+list_of_categories.append("GESC")
+list_of_categories.append("HIST")
+list_of_categories.append("MATH")
+list_of_categories.append("MEDX")
+list_of_categories.append("POLS")
+list_of_categories.append("PSYC")
+list_of_categories.append("SOCI")
+list_of_categories.append("THEA")
+list_of_categories.append("Add/Remove Category")
 
 event_list = file_to_event_list()
 
@@ -83,10 +102,53 @@ def create_event():
         cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
         top.destroy()
 
+    def add_category():
+        Category_win = tk.Toplevel(win)
+        Category_win.geometry('500x200')
+        Category_win.title("Adding/Removing a Category")
+
+        def add_button():
+            global list_of_categories
+            list_of_categories.insert(len(list_of_categories) - 1, category_title.get())
+            msg_label = tk.Label(Category_win, text=f"Category({category_title.get()}) has been added",
+                                 font="arial 14 bold", wraplength=390)
+            msg_label.place(x=25, y=90)
+
+        def remove_button():
+            global list_of_categories
+            name = None
+            msg_string = ""
+
+            for label in remove_labels:
+                label.destroy()
+
+            try:
+                list_of_categories.index(category_title.get())
+            except ValueError:
+                msg_sting = f"Category({category_title.get()}) waws not found"
+            else:
+                list_of_categories.remove(category_title.get())
+                msg_string = f"Category({category_title.get()}) has been removed"
+            msg_label = tk.Label(Category_win, text=msg_string,
+                                 font="arial 14 bold", wraplength=390)
+            remove_labels.append(msg_label)
+            msg_label.place(x=25, y=90)
+
+        category_label = tk.Label(Category_win, text="Category Name: ", font="Arial 14")
+        category_label.place(x=5, y=50)
+        category_title = tk.Entry(Category_win, width=20, font="Arial 14")
+        category_title.place(x=150, y=50)
+        add = tk.Button(Category_win, text="Add", command=add_button)
+        add.place(x=380, y=50)
+        remove = tk.Button(Category_win, text="Remove", command=remove_button)
+        remove.place(x=420, y=50)
+
     def change_category_color(choice):
         """Change dropdown color for category selection"""
+        if choice == "Add/Remove Category":
+            add_category()
         category_Index = list_of_categories.index(choice)
-        color_choosen = colors[category_Index]
+        color_choosen = category_colors[category_Index]
         category_drop.config(bg=color_choosen, activebackground=color_choosen)
 
     # Label Declarations
@@ -144,11 +206,10 @@ def create_event():
     end_minute_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
     end_minute_time_drop["menu"].config(bg='lemon chiffon')
 
-    list_of_categories = ["ARTS", "BIOL", "CHEM", "COMM", "COMP", "ECON", "EDUC", "ENGL", "GESC",
-                          "HIST", "MATH", "MEDX", "POLS", "PSYC", "SOCI", "THEA"]
-    colors = ['dark orange', 'aquamarine', 'lime green', 'dark cyan', 'dodger blue', 'Spring Green', 'PaleGreen3'
-        , 'Olive Drab', 'LightSteelBlue3', 'sienna3', 'Tomato', 'Gold', 'Indian Red', 'LightGoldenrod2'
-        , 'Salmon3', 'MediumPurple2']
+    category_colors = ['dark orange', 'aquamarine', 'lime green', 'dark cyan', 'dodger blue', 'Spring Green',
+                       'PaleGreen3'
+        , 'OliveDrab1', 'LightSteelBlue3', 'sienna3', 'Tomato', 'Gold', 'Indian Red', 'LightGoldenrod2'
+        , 'Salmon3', 'MediumPurple2', 'pink1']
 
     category = tk.StringVar()
     category_drop = tk.OptionMenu(top, category, *list_of_categories, command=change_category_color)
@@ -195,7 +256,7 @@ def create_event():
     category_label.place(x=50, y=250)
     category_drop.place(x=170, y=250)
 
-    color_btn.place(x=280, y=252)
+    color_btn.place(x=340, y=252)
 
     note_label.place(x=50, y=300)
     note.place(x=170, y=300)
@@ -326,7 +387,7 @@ def remove_event():
         msg_string = f"Event title({event_title.get()}) was not found"
         msg_label = tk.Label(remove_event_window, text=msg_string, font="arial 14 bold", wraplength=390)
 
-        for label in remove_event_labels:
+        for label in remove_labels:
             label.destroy()
 
         for i in range(len(event_list)):
@@ -356,23 +417,23 @@ def remove_event():
                                                      font="arial 14",
                                                      anchor='w', justify="left", wraplength=360)
             event_string_label.place(x=0, y=150)
-            remove_event_labels.append(event_string_label)
+            remove_labels.append(event_string_label)
             event_date_label.place(x=0, y=175)
-            remove_event_labels.append(event_date_label)
+            remove_labels.append(event_date_label)
             event_time_label.place(x=0, y=200)
-            remove_event_labels.append(event_time_label)
+            remove_labels.append(event_time_label)
             event_section_label.place(x=0, y=225)
-            remove_event_labels.append(event_section_label)
+            remove_labels.append(event_section_label)
             event_description_label.place(x=0, y=250)
-            remove_event_labels.append(event_description_label)
+            remove_labels.append(event_description_label)
             event_description_notes_label.place(x=0, y=275)
-            remove_event_labels.append(event_description_notes_label)
+            remove_labels.append(event_description_notes_label)
 
             msg_string = f"Event title({event_title.get()}) has been successfully removed"
             msg_label.config(text=msg_string)
 
         msg_label.place(x=25, y=90)
-        remove_event_labels.append(msg_label)
+        remove_labels.append(msg_label)
 
     # entry box for event title
     title_label = tk.Label(remove_event_window, text="Event Title: ", font="Arial 14")
