@@ -4,9 +4,10 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=global-statement
-#pylint: disable=wildcard-import
+# pylint: disable=wildcard-import
 # pylint: disable=wildcard-import
 # pylint: disable=unused-wildcard-import
+# pylint: disable=no-value-for-parameter
 
 import time
 import tkinter as tk
@@ -110,7 +111,6 @@ def create_event():
 
         def add_button():
             """Add new category to list_of_categories"""
-            global list_of_categories
             category_name = category_title.get()
             msg_string = ""
 
@@ -132,7 +132,6 @@ def create_event():
 
         def remove_button():
             """Remove category from list_of_categories"""
-            global list_of_categories
             index = None
             msg_string = ""
 
@@ -144,7 +143,7 @@ def create_event():
             except ValueError:
                 msg_string = f"Category({category_title.get()}) was not found"
 
-            if index == None:
+            if index is None:
                 msg_string = f"Category({category_title.get()}) was not found"
             else:
                 list_of_categories.remove(category_title.get())
