@@ -111,29 +111,46 @@ def create_event():
         def add_button():
             """Add new category to list_of_categories"""
             global list_of_categories
-            list_of_categories.insert(len(list_of_categories) - 1, category_title.get())
-            msg_label = tk.Label(Category_win, text=f"Category({category_title.get()}) has been added",
-                                 font="arial 14 bold", wraplength=390)
+            category_name = category_title.get()
+            msg_string = ""
+
+            for label in remove_labels:
+                label.destroy()
+
+            # Check if the category already exists
+            for name in list_of_categories:
+                if name == category_name:
+                    msg_string = f"Category({category_name}) already exists"
+
+            if msg_string == "":
+                list_of_categories.insert(len(list_of_categories) - 1, category_title.get())
+                msg_string = f"Category({category_title.get()}) has been added"
+
+            msg_label = tk.Label(Category_win, text=msg_string, font="arial 14 bold", wraplength=390)
+            remove_labels.append(msg_label)
             msg_label.place(x=25, y=90)
 
         def remove_button():
             """Remove category from list_of_categories"""
             global list_of_categories
-            name = None
+            index = None
             msg_string = ""
 
             for label in remove_labels:
                 label.destroy()
 
             try:
-                list_of_categories.index(category_title.get())
+                index = list_of_categories.index(category_title.get())
             except ValueError:
-                msg_sting = f"Category({category_title.get()}) waws not found"
+                msg_string = f"Category({category_title.get()}) was not found"
+
+            if index == None:
+                msg_string = f"Category({category_title.get()}) was not found"
             else:
                 list_of_categories.remove(category_title.get())
                 msg_string = f"Category({category_title.get()}) has been removed"
-            msg_label = tk.Label(Category_win, text=msg_string,
-                                 font="arial 14 bold", wraplength=390)
+
+            msg_label = tk.Label(Category_win, text=msg_string, font="arial 14 bold", wraplength=390)
             remove_labels.append(msg_label)
             msg_label.place(x=25, y=90)
 
