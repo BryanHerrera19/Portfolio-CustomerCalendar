@@ -36,9 +36,22 @@ def dictionary_to_event_list(loaded_dict_list):
     '''Changes ditionary to event_info class'''
     loaded_event_list = []
     for event in loaded_dict_list:
-        loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(), event.get("start_time"),
+        loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(),
+                                            event.get("start_time"),
                                             event.get("start_time_day"), event.get("end_time"),
                                             event.get("name"), event.get("notes"),
                                             event.get("category")))
-    print(loaded_event_list)
     return loaded_event_list
+
+def category_list_to_file(category_list):
+    with open('./src/categories.txt', 'w', encoding='utf-8') as file_write:
+        for cat in category_list:
+            file_write.write("%s\n" % cat)
+
+def file_to_category_list():
+    categories = []
+    with open('./src/categories.txt', 'r', encoding='utf-8') as file_read:
+        for line in file_read:
+            x = line[:-1]
+            categories.append(x)
+    return categories

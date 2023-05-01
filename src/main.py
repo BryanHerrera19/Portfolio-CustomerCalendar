@@ -35,27 +35,8 @@ event_window_labels = []
 remove_labels = []
 list_of_categories = []
 
-# initialize list_of_categories with school subjects
-# can remove after it can be saveda and loaded from a txt file
-list_of_categories.append("ARTS")
-list_of_categories.append("BIOL")
-list_of_categories.append("CHEM")
-list_of_categories.append("COMM")
-list_of_categories.append("COMP")
-list_of_categories.append("ECON")
-list_of_categories.append("EDUC")
-list_of_categories.append("ENGL")
-list_of_categories.append("GESC")
-list_of_categories.append("HIST")
-list_of_categories.append("MATH")
-list_of_categories.append("MEDX")
-list_of_categories.append("POLS")
-list_of_categories.append("PSYC")
-list_of_categories.append("SOCI")
-list_of_categories.append("THEA")
-list_of_categories.append("Add/Remove Category")
-
 event_list = file_to_event_list()
+list_of_categories = file_to_category_list()
 reminder = R()
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
@@ -547,6 +528,7 @@ def paste_event_list_labels(window):
 def save_events():
     saved_events_list = event_list_to_dictionary(event_list)
     dictionary_list_to_file(saved_events_list)
+    category_list_to_file(list_of_categories)
 
 def paste_saved_events():
     for event in event_list:
