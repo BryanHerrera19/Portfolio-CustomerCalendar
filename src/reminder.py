@@ -4,6 +4,7 @@
 # pylint: disable=too-many-function-args
 
 import datetime as dt
+import time_help_functions as t1
 
 
 
@@ -45,12 +46,12 @@ class Reminder:
     def weekBefore(self, event):
         """Checks if today is a week before event """
         # Day 
-        today = str(dt.datetime.today() + dt.timedelta(days = 7))
-        week_before = str(event.getDay())
+        today = str(dt.datetime.today() + dt.timedelta(days = 7)).strip()
+        week_before = str(event.getDay()).strip()
         # Time
         now = dt.datetime.now()
-        current_time = str(now.strftime("%H:%M"))
-        event_time = str(vars(event)['start_time'])
+        current_time = str(now.strftime("%I:%M")).strip()
+        event_time = str(vars(event)['start_time']).strip()
         if (today[0:10] == week_before) and (current_time == event_time):
             return True
         return False
@@ -58,12 +59,12 @@ class Reminder:
     def dayBefore(self, event):
         """Checks if today is a day before event """
         # Day
-        today = str(dt.datetime.today() + dt.timedelta(days = 1))
-        DayBefore = str(vars(event)['day'])
+        today = str(dt.datetime.today() + dt.timedelta(days = 1)).strip()
+        DayBefore = str(vars(event)['day']).strip()
         # Time
         now = dt.datetime.now()
-        current_time = str(now.strftime("%H:%M"))
-        event_time = str(vars(event)['start_time'])
+        current_time = str(now.strftime("%I:%M")).strip()
+        event_time = str(vars(event)['start_time']).strip()
         if today[0:10] == DayBefore and (current_time == event_time):
             return True
         return False
@@ -71,13 +72,14 @@ class Reminder:
     def hourBefore(self, event):
         """Check if Today is an hour before event"""
         # Day
-        today = str(dt.datetime.today() + dt.timedelta(hours = 1))
-        event_day = str(vars(event)['day'])
+        today = str(dt.datetime.today() + dt.timedelta(hours = 1)).strip()
+        event_day = str(vars(event)['day']).strip()
         # Time
         now = dt.datetime.now()
-        current_time = str(now.strftime("%H:%M"))
-        event_time = vars(event)['start_time']
+        current_time = str(now.strftime("%I:%M")).strip()
+        event_time = vars(event)['start_time'].strip()
         print(f"Event_time: {event_time} || Event Day: {event_day}")
+        
         print(f"Current_Time: {current_time} || Current Day: {today[0:10]}")
         if (event_day == today) and (event_time == current_time):
             return True
