@@ -44,28 +44,38 @@ class Reminder:
 
     def weekBefore(self, event):
         """Checks if today is a week before event """
-        today = str(dt.datetime.today())
-        week_before = str(event.getDay() - dt.timedelta(days=7))
-        if today[0:10] == week_before:
+        # Day 
+        today = str(dt.datetime.today() + dt.timedelta(days = 7))
+        week_before = str(event.getDay())
+        # Time
+        now = dt.datetime.now()
+        current_time = str(now.strftime("%H:%M"))
+        event_time = str(vars(event)['start_time'])
+        if (today[0:10] == week_before) and (current_time == event_time):
             return True
         return False
 
     def dayBefore(self, event):
         """Checks if today is a day before event """
-        today = str(dt.datetime.today())
-        DayBefore = str(vars(event)['day'] - dt.timedelta(days=1))
-        if today[0:10] == DayBefore:
+        # Day
+        today = str(dt.datetime.today() + dt.timedelta(days = 1))
+        DayBefore = str(vars(event)['day'])
+        # Time
+        now = dt.datetime.now()
+        current_time = str(now.strftime("%H:%M"))
+        event_time = str(vars(event)['start_time'])
+        if today[0:10] == DayBefore and (current_time == event_time):
             return True
         return False
 
     def hourBefore(self, event):
         """Check if Today is an hour before event"""
-
+        # Day
         today = str(dt.datetime.today() + dt.timedelta(hours = 1))
         event_day = str(vars(event)['day'])
+        # Time
         now = dt.datetime.now()
         current_time = str(now.strftime("%H:%M"))
-
         event_time = vars(event)['start_time']
         print(f"Event_time: {event_time} || Event Day: {event_day}")
         print(f"Current_Time: {current_time} || Current Day: {today[0:10]}")
