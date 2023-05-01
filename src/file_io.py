@@ -1,5 +1,6 @@
 # pylint: disable=wildcard-import
 # pylint: disable=unused-wildcard-import
+# pylint: disable=consider-using-f-string
 '''Handles file io for our calendar'''
 
 import json
@@ -44,14 +45,16 @@ def dictionary_to_event_list(loaded_dict_list):
     return loaded_event_list
 
 def category_list_to_file(category_list):
+    '''Saves list of categories to file'''
     with open('./src/categories.txt', 'w', encoding='utf-8') as file_write:
         for cat in category_list:
             file_write.write("%s\n" % cat)
 
 def file_to_category_list():
+    '''Loades list of categories from file to a list'''
     categories = []
     with open('./src/categories.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
-            x = line[:-1]
-            categories.append(x)
+            input = line[:-1]
+            categories.append(input)
     return categories
