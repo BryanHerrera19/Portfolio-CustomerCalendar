@@ -88,13 +88,15 @@ class Reminder:
     def upcomingEvent(self, event):
         """Checks if event is upcoming"""
         #print(vars(event))
-
         if self.week:
-            return self.weekBefore(event)
+            if self.weekBefore(event):
+                return True
         if self.day:
-            return self.dayBefore(event)
+            if self.dayBefore(event):
+                return True
         if self.hour:
-            return self.hourBefore(event)
+            if self.hourBefore(event):
+                return True
         return False
 
     def status(self):
