@@ -4,7 +4,6 @@
 # pylint: disable=too-many-function-args
 
 import datetime as dt
-import time_help_functions as t1
 
 
 
@@ -45,7 +44,7 @@ class Reminder:
 
     def weekBefore(self, event):
         """Checks if today is a week before event """
-        # Day 
+        # Day
         today = str(dt.datetime.today() + dt.timedelta(days = 7)).strip()
         week_before = str(event.getDay()).strip()
         # Time
@@ -79,7 +78,6 @@ class Reminder:
         current_time = str(now.strftime("%I:%M")).strip()
         event_time = vars(event)['start_time'].strip()
         print(f"Event_time: {event_time} || Event Day: {event_day}")
-        
         print(f"Current_Time: {current_time} || Current Day: {today[0:10]}")
         if (event_day == today) and (event_time == current_time):
             return True
