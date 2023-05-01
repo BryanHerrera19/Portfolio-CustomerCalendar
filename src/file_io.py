@@ -55,6 +55,21 @@ def file_to_category_list():
     categories = []
     with open('./src/categories.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
-            input = line[:-1]
-            categories.append(input)
+            read_line = line[:-1]
+            categories.append(read_line)
     return categories
+
+def category_colors_to_file(category_colors):
+    '''Saves list of category colors to file'''
+    with open('./src/category_colors.txt', 'w', encoding='utf-8') as file_write:
+        for cat_col in category_colors:
+            file_write.write("%s\n" % cat_col)
+
+def file_to_category_colors():
+    '''Loads list of category colors from file to a list'''
+    category_colors = []
+    with open('./src/category_colors.txt', 'r', encoding='utf-8') as file_read:
+        for line in file_read:
+            read_line = line[:-1]
+            category_colors.append(read_line)
+    return category_colors

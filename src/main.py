@@ -34,9 +34,11 @@ event_list = []
 event_window_labels = []
 remove_labels = []
 list_of_categories = []
+category_colors = []
 
 event_list = file_to_event_list()
 list_of_categories = file_to_category_list()
+category_colors = file_to_category_colors()
 reminder = R()
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
@@ -203,11 +205,6 @@ def create_event():
                                          "45", "50", "55")
     end_minute_time_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
     end_minute_time_drop["menu"].config(bg='lemon chiffon')
-
-    category_colors = ['dark orange', 'aquamarine', 'lime green', 'dark cyan', 'dodger blue', 'Spring Green',
-                       'PaleGreen3'
-        , 'OliveDrab1', 'LightSteelBlue3', 'sienna3', 'Tomato', 'Gold', 'Indian Red', 'LightGoldenrod2'
-        , 'Salmon3', 'MediumPurple2', 'pink1']
 
     category = tk.StringVar()
     category_drop = tk.OptionMenu(top, category, *list_of_categories, command=change_category_color)
@@ -529,6 +526,7 @@ def save_events():
     saved_events_list = event_list_to_dictionary(event_list)
     dictionary_list_to_file(saved_events_list)
     category_list_to_file(list_of_categories)
+    category_colors_to_file(category_colors)
 
 def paste_saved_events():
     for event in event_list:
