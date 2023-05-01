@@ -65,8 +65,7 @@ class Reminder:
         event_day = str(vars(event)['day'])
         now = dt.datetime.now()
         current_time = str(now.strftime("%H:%M"))
-        
-        
+
         event_time = vars(event)['start_time']
         print(f"Event_time: {event_time} || Event Day: {event_day}")
         print(f"Current_Time: {current_time} || Current Day: {today[0:10]}")

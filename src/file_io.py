@@ -1,5 +1,6 @@
 # pylint: disable=wildcard-import
 # pylint: disable=unused-wildcard-import
+# pylint: disable=consider-using-f-string
 '''Handles file io for our calendar'''
 
 import json
@@ -36,9 +37,39 @@ def dictionary_to_event_list(loaded_dict_list):
     '''Changes ditionary to event_info class'''
     loaded_event_list = []
     for event in loaded_dict_list:
-        loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(), event.get("start_time"),
+        loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(),
+                                            event.get("start_time"),
                                             event.get("start_time_day"), event.get("end_time"),
                                             event.get("name"), event.get("notes"),
                                             event.get("category")))
-    print(loaded_event_list)
     return loaded_event_list
+
+def category_list_to_file(category_list):
+    '''Saves list of categories to file'''
+    with open('./src/categories.txt', 'w', encoding='utf-8') as file_write:
+        for cat in category_list:
+            file_write.write("%s\n" % cat)
+
+def file_to_category_list():
+    '''Loades list of categories from file to a list'''
+    categories = []
+    with open('./src/categories.txt', 'r', encoding='utf-8') as file_read:
+        for line in file_read:
+            read_line = line[:-1]
+            categories.append(read_line)
+    return categories
+
+def category_colors_to_file(category_colors):
+    '''Saves list of category colors to file'''
+    with open('./src/category_colors.txt', 'w', encoding='utf-8') as file_write:
+        for cat_col in category_colors:
+            file_write.write("%s\n" % cat_col)
+
+def file_to_category_colors():
+    '''Loads list of category colors from file to a list'''
+    category_colors = []
+    with open('./src/category_colors.txt', 'r', encoding='utf-8') as file_read:
+        for line in file_read:
+            read_line = line[:-1]
+            category_colors.append(read_line)
+    return category_colors
