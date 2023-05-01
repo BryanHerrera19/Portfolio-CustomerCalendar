@@ -6,6 +6,7 @@
 import datetime as dt
 
 
+
 class Reminder:
     """Reminder Class used to Remind the User of when an Event is Prior to it occurring"""
 
@@ -52,25 +53,30 @@ class Reminder:
     def dayBefore(self, event):
         """Checks if today is a day before event """
         today = dt.datetime.today()
-        DayBefore = event.getDay() - dt.timedelta(days=1)
+        DayBefore = vars(event)['day'] - dt.timedelta(days=1)
         if today == DayBefore:
             return True
         return False
 
     def hourBefore(self, event):
         """Check if Today is an hour before event"""
-        today = dt.datetime.today()
-        hourBefore = event.getDay() - dt.timedelta(hours=1)
-        if today == hourBefore:
+
+        today = dt.datetime.today() + dt.timedelta(hours = 1)
+        event_day = vars(event)['day']
+        now = dt.datetime.now()
+        current_time = str(now.strftime("%H:%M"))
+        
+        
+        event_time = vars(event)['start_time']
+        print(f"Event_time: {event_time} || Event Day: {event_day}")
+        print(f"Current_Time: {current_time} || Current Day: {today}")
+        if (event_day == today) and (event_time == current_time):
             return True
         return False
 
     def upcomingEvent(self, event):
         """Checks if event is upcoming"""
-        # print("Today", dt.datetime.today(), "\n")
-        # print("Week", event.getDay() - dt.timedelta(days=7), "\n")
-        # print("Day", event.getDay() - dt.timedelta(days=1), "\n")
-        # print("hour before", event.getDay() - dt.timedelta(hours=1), "\n")
+        #print(vars(event))
 
         if self.week:
             return self.weekBefore(event)
