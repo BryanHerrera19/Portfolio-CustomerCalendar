@@ -11,7 +11,7 @@
 
 import time
 import tkinter as tk
-from datetime import date
+from datetime import *
 from tkinter import colorchooser
 from tkinter import messagebox
 
@@ -56,7 +56,6 @@ list_of_categories.append("THEA")
 list_of_categories.append("Add/Remove Category")
 
 event_list = file_to_event_list()
-
 reminder = R()
 
 cal = Calendar(win, font="Arial 14", selectmode="day",
@@ -73,7 +72,6 @@ cal = Calendar(win, font="Arial 14", selectmode="day",
 
 cal.config(background="white")
 cal.pack(pady=20)
-# Buttons
 
 def create_event():
     '''Create event window for calendar'''
@@ -96,7 +94,7 @@ def create_event():
             eventInfo(temp_cal.get_date(), save_start_time, start_day.get(), save_end_time, title.get(),
                       user_Notes, category.get()))
         # Sort event_list by their category and start time (chronological order)
-        event_list.sort(key=lambda event: [event.category, event.day, event.start_time_day])
+        #event_list.sort(key=lambda event: [event.category, event.day, event.start_time_day])
         event_list = eventInfo.sortStartTime(eventInfo, event_list)
 
         cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
@@ -550,6 +548,12 @@ def save_events():
     saved_events_list = event_list_to_dictionary(event_list)
     dictionary_list_to_file(saved_events_list)
 
+def paste_saved_events():
+    for event in event_list:
+        cal.calevent_create(event.getDay(), text="New Event", tags="Message")
+        cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
+
+paste_saved_events()
 
 # Labels
 DATE = tk.Label(win, text="Start", font="Arial 14")
