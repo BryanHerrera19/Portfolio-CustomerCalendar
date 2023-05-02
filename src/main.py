@@ -441,8 +441,8 @@ def remove_event(window):
     title_label.place(x=5, y=50)
     event_title = tk.Entry(remove_event_window, width=20, font="Arial 14")
     event_title.place(x=125, y=50)
-    remove_button = tk.Button(remove_event_window, text="Remove", command=remove_event_button)
-    remove_button.config(bg="light goldenrod", activebackground="goldenrod")
+    remove_button = tk.Button(remove_event_window, text="Remove", command=remove_event_button, bg="light goldenrod",
+                              activebackground="goldenrod")
     remove_button.place(x=355, y=50)
 
 
