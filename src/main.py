@@ -55,7 +55,7 @@ cal.config(background="white")
 cal.pack(pady=20)
 
 def create_event():
-    '''Create event window for calendar'''
+    """Create event window for calendar"""
     # pylint: disable-msg=too-many-locals
     # pylint: disable=too-many-statements
     top = tk.Toplevel(win)
@@ -63,7 +63,7 @@ def create_event():
     top.title("Creating Event")
 
     def set_event():
-        '''Set event on calendar and color it'''
+        """Set event on calendar and color it"""
         # Convert event info
         user_Notes = note.get(1.0, "end-1c")
         save_start_time = start_hour_time.get() + ":" + start_minute_time.get()
@@ -276,7 +276,7 @@ def open_tips():
 
 
 def event_list_window():
-    '''Creates a new window with a list of events'''
+    """Creates a new window with a list of events"""
     event_window = tk.Toplevel(win)
     event_window.geometry('470x640')
     event_window.title("Event List")
@@ -375,13 +375,13 @@ def study_timer():
 def remove_event(window):
     # pylint: disable-msg=too-many-locals
     # pylint: disable-msg=consider-using-enumerate
-    '''Creates a new window to remove an event'''
+    """Creates a new window to remove an event"""
     remove_event_window = tk.Toplevel(win)
     remove_event_window.geometry('520x400')
     remove_event_window.title("Remove Event")
 
     def remove_event_button():
-        '''Shows user event info and deletes said event'''
+        """Shows user event info and deletes said event"""
         event = None
         msg_string = f"Event title({event_title.get()}) was not found"
         msg_label = tk.Label(remove_event_window, text=msg_string, font="arial 14 bold", wraplength=390)
@@ -447,25 +447,25 @@ def remove_event(window):
 
 
 def destroy_list_labels():
-    '''Destroys the list of labels in the event window'''
+    """Destroys the list of labels in the event window"""
     for label in event_window_labels:
         label.destroy()
 
 
 def sort_event_window_labels_by_date(window):
-    '''Sorts event list by date and pastes it to event window'''
+    """Sorts event list by date and pastes it to event window"""
     destroy_list_labels()
     sort_by_date(event_list)
     paste_event_list_labels(window)
 
 def sort_event_window_labels_by_category(window):
-    '''Sorts event list by category and pastes it to event window'''
+    """Sorts event list by category and pastes it to event window"""
     destroy_list_labels()
     sort_by_category(event_list)
     paste_event_list_labels(window)
 
 def paste_event_list_labels(window):
-    '''Pastes events onto the event list window'''
+    """Pastes events onto the event list window"""
     # pylint: disable-msg=too-many-locals
     # pylint: disable=too-many-statements
 
