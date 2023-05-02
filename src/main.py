@@ -80,8 +80,8 @@ def create_event():
         #event_list.sort(key=lambda event: [event.category, event.day, event.start_time_day])
         event_list = eventInfo.sortStartTime(eventInfo, event_list)
 
-        cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags="Message")
-        cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
+        cal.calevent_create(date=temp_cal.get_date(), text="New Event", tags=title.get())
+        cal.tag_config(title.get(), background="MediumPurple1", foreground="white")  # change color here later
         top.destroy()
 
     def add_remove_category():
@@ -426,6 +426,7 @@ def remove_event(window):
 
             msg_string = f"Event title({event_title.get()}) has been successfully removed"
             msg_label.config(text=msg_string)
+            cal.calevent_remove(tags=event_title.get())
             paste_event_list_labels(window)
 
         msg_label.place(x=25, y=90)
@@ -531,8 +532,8 @@ def save_events():
 
 def paste_saved_events():
     for event in event_list:
-        cal.calevent_create(event.getDay(), text="New Event", tags="Message")
-        cal.tag_config("Message", background="MediumPurple1", foreground="white")  # change color here later
+        cal.calevent_create(event.getDay(), text="New Event", tags=event.getName())
+        cal.tag_config(event.getName(), background="MediumPurple1", foreground="white")  # change color here later
 
 paste_saved_events()
 
