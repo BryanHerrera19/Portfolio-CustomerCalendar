@@ -19,7 +19,7 @@ def event_list_to_dictionary(event_list):
 
 def dictionary_list_to_file(saved_events):
     '''Saves dictionary to file'''
-    with open('./src/eventlist.txt', 'w', encoding = 'utf-8') as file_write:
+    with open('eventlist.txt', 'w', encoding='utf-8') as file_write:
         for event in saved_events:
             file_write.write(json.dumps(event, indent=4, sort_keys=True, default=str))
     return True
@@ -27,7 +27,7 @@ def dictionary_list_to_file(saved_events):
 def file_to_event_list():
     '''Reads dictionary from file'''
     loaded_dict_list = []
-    with open('./src/eventlist.txt', 'r', encoding='utf-8') as file_read:
+    with open('eventlist.txt', 'r', encoding='utf-8') as file_read:
         data = file_read.read()
         js_data = json.loads(data)
         loaded_dict_list.append(js_data)
@@ -46,14 +46,14 @@ def dictionary_to_event_list(loaded_dict_list):
 
 def category_list_to_file(category_list):
     '''Saves list of categories to file'''
-    with open('./src/categories.txt', 'w', encoding='utf-8') as file_write:
+    with open('categories.txt', 'w', encoding='utf-8') as file_write:
         for cat in category_list:
             file_write.write("%s\n" % cat)
 
 def file_to_category_list():
     '''Loades list of categories from file to a list'''
     categories = []
-    with open('./src/categories.txt', 'r', encoding='utf-8') as file_read:
+    with open('categories.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
             read_line = line[:-1]
             categories.append(read_line)
@@ -61,14 +61,14 @@ def file_to_category_list():
 
 def category_colors_to_file(category_colors):
     '''Saves list of category colors to file'''
-    with open('./src/category_colors.txt', 'w', encoding='utf-8') as file_write:
+    with open('category_colors.txt', 'w', encoding='utf-8') as file_write:
         for cat_col in category_colors:
             file_write.write("%s\n" % cat_col)
 
 def file_to_category_colors():
     '''Loads list of category colors from file to a list'''
     category_colors = []
-    with open('./src/category_colors.txt', 'r', encoding='utf-8') as file_read:
+    with open('category_colors.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
             read_line = line[:-1]
             category_colors.append(read_line)

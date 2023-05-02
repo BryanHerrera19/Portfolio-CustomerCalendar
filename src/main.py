@@ -9,10 +9,8 @@
 # pylint: disable=unused-wildcard-import
 # pylint: disable=no-value-for-parameter
 
-import time
+import time as t
 import tkinter as tk
-from datetime import *
-from tkinter import colorchooser
 from tkinter import messagebox
 
 from tkcalendar import Calendar
@@ -209,8 +207,8 @@ def create_event():
     category = tk.StringVar()
     category_drop = tk.OptionMenu(top, category, *list_of_categories, command=change_category_color)
 
-    category_drop.config(bg="peach puff", activebackground="peach puff")
-    category_drop["menu"].config(bg='peach puff')
+    category_drop.config(bg="lemon chiffon", activebackground="lemon chiffon")
+    category_drop["menu"].config(bg='lemon chiffon')
 
     # Color picker
     # do not uncomment this it will break the menu
@@ -219,12 +217,11 @@ def create_event():
     # color().set()
 
     # stores selected color
-    def color():
-        """Holds user choosen color"""
-        # pylint: disable=unused-variable
-        my_color = colorchooser.askcolor()
-
-    color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)  # pylint: disable=unused-argument
+    # def color():
+    #     """Holds user choosen color"""
+    #     # pylint: disable=unused-variable
+    #     my_color = colorchooser.askcolor()
+    # color_btn = tk.Button(top, height=1, text="Pick a Color", command=color)  # pylint: disable=unused-argument
 
     # Event title entry box
     title = tk.Entry(top, width=30, font="Arial 14")
@@ -239,19 +236,19 @@ def create_event():
 
     time_label.place(x=50, y=150)
     start_hour_time_drop.place(x=170, y=150)
-    start_time_colon_label.place(x=234, y=150)
+    start_time_colon_label.place(x=230, y=150)
     start_minute_time_drop.place(x=250, y=150)
     start_day_drop.place(x=330, y=150)
     to_label.place(x=250, y=175)
     end_hour_time_drop.place(x=170, y=200)
-    end_time_colon_label.place(x=234, y=200)
+    end_time_colon_label.place(x=230, y=200)
     end_minute_time_drop.place(x=250, y=200)
     end_day_drop.place(x=330, y=200)
 
     category_label.place(x=50, y=250)
     category_drop.place(x=170, y=250)
 
-    color_btn.place(x=340, y=252)
+    # color_btn.place(x=340, y=252)
 
     note_label.place(x=50, y=300)
     note.place(x=170, y=300)
@@ -292,7 +289,6 @@ def reminder_window():
     sWindow = tk.Toplevel(win)
     sWindow.title("Reminder")
     sWindow.geometry("800x500")
-    sWindow.configure(background='burlywood1')
     # Update Reminder
     def weeklyReminder():
         # print(reminder.status())
@@ -302,19 +298,24 @@ def reminder_window():
     def dayBeforeReminder():
         reminder.setDay(not reminder.getDay())
         Status_Label["text"] = f"Status: {reminder.status()}"
+
     def hourReminder():
         reminder.setHour(not reminder.getHour())
         Status_Label["text"] = f"Status: {reminder.status()}"
+
     # Label Declarations
     Instruction_Label = tk.Label(sWindow, text="Press the Buttons Below to Turn ON/OFF Reminders", font="Arial 14")
-    Status_Label = tk.Label(sWindow, text = f"Status: {reminder.status()}", font = "Arial 14")
+    Status_Label = tk.Label(sWindow, text=f"Status: {reminder.status()}", font="Arial 14")
 
     # Label Placement
-    Instruction_Label.place(x = 50, y = 50)
-    Status_Label.place(x = 50, y = 80)
-    tk.Button(sWindow, text="Weekly", font = "arial 14 bold", command = weeklyReminder).pack(pady=50, padx=50, side = tk.LEFT)
-    tk.Button(sWindow, text="Day", font = "arial 14 bold", command = dayBeforeReminder).pack(pady=50, padx=50, side = tk.LEFT)
-    tk.Button(sWindow, text="Hour", font = "arial 14 bold", command = hourReminder).pack(pady=50, padx=50, side = tk.LEFT)
+    Instruction_Label.place(x=50, y=50)
+    Status_Label.place(x=50, y=80)
+    tk.Button(sWindow, text="Weekly", font="arial 14 bold", command=weeklyReminder, bg="light goldenrod",
+              activebackground="goldenrod").pack(pady=50, padx=50, side=tk.LEFT)
+    tk.Button(sWindow, text="Day", font="arial 14 bold", command=dayBeforeReminder, bg="light goldenrod",
+              activebackground="goldenrod").pack(pady=50, padx=50, side=tk.LEFT)
+    tk.Button(sWindow, text="Hour", font="arial 14 bold", command=hourReminder, bg="light goldenrod",
+              activebackground="goldenrod").pack(pady=50, padx=50, side=tk.LEFT)
 
 
 
@@ -323,7 +324,7 @@ def study_timer():
     tWindow = tk.Toplevel(win)
     tWindow.title("Study Timer")
     tWindow.geometry("500x500")
-    tWindow.configure(background='burlywood1')
+    tWindow.configure(background='grey64')
 
     # Variables
     hourString, minuteString, secondString = tk.StringVar(), tk.StringVar(), tk.StringVar()
@@ -342,10 +343,12 @@ def study_timer():
     def runTimer():
         """Runs the timer with exceptions"""
         try:
-            clock_Time = int(hourString.get())*3600 + int(minuteString.get())*60 + int(secondString.get())
+            clock_Time = int(hourString.get()) * 3600 + int(minuteString.get()) * 60 + int(secondString.get())
         except ValueError:
-            messagebox.showinfo("Invalid Input(s)!!!", "Please check if all inputs are valid (Numerical)")
-        while clock_Time > -1 :
+            messagebox.showinfo("Invalid Input(s)!!!",
+                                "Please check if all inputs are Numerical\n(hour, minute, second)")
+
+        while clock_Time > -1:
             totalMinutes, totalSeconds = divmod(clock_Time, 60)
             totalHours = 0
             if totalMinutes > 60:
@@ -355,14 +358,15 @@ def study_timer():
             secondString.set(f"{totalSeconds}")
             # Update Constantly
             tWindow.update()
-            time.sleep(1)
+            t.sleep(1)
             if clock_Time == 0:
                 messagebox.showinfo("Timer", "Timer Has Finished!")
                 # To Close Timer
                 tWindow.destroy()
             clock_Time -= 1
 
-    setTimeButton = tk.Button(tWindow, text='Set Time', bd=5, command=runTimer)
+    setTimeButton = tk.Button(tWindow, text='Set Time', bd=5, command=runTimer, bg="light goldenrod",
+                              activebackground="goldenrod")
     setTimeButton.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     tWindow.mainloop()
@@ -438,6 +442,7 @@ def remove_event(window):
     event_title = tk.Entry(remove_event_window, width=20, font="Arial 14")
     event_title.place(x=125, y=50)
     remove_button = tk.Button(remove_event_window, text="Remove", command=remove_event_button)
+    remove_button.config(bg="light goldenrod", activebackground="goldenrod")
     remove_button.place(x=355, y=50)
 
 
@@ -514,11 +519,15 @@ def paste_event_list_labels(window):
             event_window_labels.append(event_description_notes_label)
             # button
             date_button = tk.Button(window, text="Date", command=lambda: sort_event_window_labels_by_date(window))
+            date_button.config(bg="light goldenrod", activebackground="goldenrod")
             category_button = tk.Button(window, text="Category/Class",
                                         command=lambda: sort_event_window_labels_by_category(window))
+            category_button.config(bg="light goldenrod", activebackground="goldenrod")
+
             date_button.place(x=75, y=5)
             category_button.place(x=150, y=5)
             remove_button = tk.Button(window, text="Remove Event", command=lambda: remove_event(window))
+            remove_button.config(bg="light goldenrod", activebackground="goldenrod")
             remove_button.place(x=300, y=5)
     else:
         no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
@@ -535,6 +544,7 @@ def paste_saved_events():
         cal.calevent_create(event.getDay(), text="New Event", tags=event.getName())
         cal.tag_config(event.getName(), background="MediumPurple1", foreground="white")  # change color here later
 
+
 paste_saved_events()
 
 # Labels
@@ -545,14 +555,20 @@ timeLabel.pack()
 DATE.pack()
 
 # Buttons
-tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold").pack(pady=50, padx=30, side=tk.LEFT)
-tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold").pack(pady=50, padx=15,
-                                                                                          side=tk.LEFT)
-tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips).pack(pady=50, padx=15,
-                                                                                                     side=tk.LEFT)
-tk.Button(win, text="Study Timer", font="arial 14 bold", command = study_timer).pack(pady=50, padx=15, side=tk.LEFT)
-tk.Button(win, text="Reminders", font = "arial 14 bold", command = reminder_window).pack(pady=50, padx=15, side = tk.LEFT)
-tk.Button(win, text="Save", font="arial 14 bold", command= save_events).pack(pady=50,padx=15, side=tk.LEFT)
+tk.Button(win, text="Create New Event", command=create_event, font="arial 14 bold", bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=30, side=tk.LEFT)
+tk.Button(win, text="Check Events", command=event_list_window, font="arial 14 bold", bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=15,
+                                             side=tk.LEFT)
+tk.Button(win, text="General Study & Scheduling Tips", font="arial 14 bold", command=open_tips, bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=15,
+                                             side=tk.LEFT)
+tk.Button(win, text="Study Timer", font="arial 14 bold", command=study_timer, bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=15, side=tk.LEFT)
+tk.Button(win, text="Reminders", font="arial 14 bold", command=reminder_window, bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=15, side=tk.LEFT)
+tk.Button(win, text="Save", font="arial 14 bold", command=save_events, bg="light goldenrod",
+          activebackground="goldenrod").pack(pady=50, padx=15, side=tk.LEFT)
 cal.pack(fill="both", expand=True)
 
 update()
