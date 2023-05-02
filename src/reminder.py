@@ -44,6 +44,7 @@ class Reminder:
 
     def weekBefore(self, event):
         """Checks if today is a week before event """
+        extra = "0"
         # Day
         today = str(dt.datetime.today() + dt.timedelta(days = 7)).strip()
         week_before = str(event.getDay()).strip()
@@ -51,12 +52,17 @@ class Reminder:
         now = dt.datetime.now()
         current_time = str(now.strftime("%I:%M")).strip()
         event_time = str(vars(event)['start_time']).strip()
+        if len(event_time) == 4:
+            event_time = extra + event_time
+        print(f"Week|| Event_time: {event_time} || Event Day: {week_before}")
+        print(f"Week|| Current_Time: {current_time} || Current Day: {today[0:10]}")
         if (today[0:10] == week_before) and (current_time == event_time):
             return True
         return False
 
     def dayBefore(self, event):
         """Checks if today is a day before event """
+        extra = "0"
         # Day
         today = str(dt.datetime.today() + dt.timedelta(days = 1)).strip()
         DayBefore = str(vars(event)['day']).strip()
@@ -64,12 +70,18 @@ class Reminder:
         now = dt.datetime.now()
         current_time = str(now.strftime("%I:%M")).strip()
         event_time = str(vars(event)['start_time']).strip()
+        if len(event_time) == 4:
+            event_time = extra + event_time
+        print(f"Day|| Event_time: {event_time} || Event Day: {DayBefore}")
+        print(f"Day|| Current_Time: {current_time} || Current Day: {today[0:10]}")
         if today[0:10] == DayBefore and (current_time == event_time):
             return True
         return False
 
     def hourBefore(self, event):
         """Check if Today is an hour before event"""
+        #Extra digit
+        extra = "0"
         # Day
         today = str(dt.datetime.today() + dt.timedelta(hours = 1)).strip()
         event_day = str(vars(event)['day']).strip()
@@ -77,9 +89,11 @@ class Reminder:
         now = dt.datetime.now()
         current_time = str(now.strftime("%I:%M")).strip()
         event_time = vars(event)['start_time'].strip()
-        print(f"Event_time: {event_time} || Event Day: {event_day}")
-        print(f"Current_Time: {current_time} || Current Day: {today[0:10]}")
-        if (event_day == today) and (event_time == current_time):
+        if len(event_time) == 4:
+            event_time = extra + event_time
+        print(f"HOUR|| Event_time: {event_time} || Event Day: {event_day}")
+        print(f"HOUR|| Current_Time: {current_time} || Current Day: {today[0:10]}")
+        if (event_day == today[0:10]) and (event_time == current_time):
             return True
         return False
 
