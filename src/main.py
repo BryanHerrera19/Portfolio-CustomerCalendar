@@ -368,7 +368,7 @@ def study_timer():
     tWindow.mainloop()
 
 
-def remove_event():
+def remove_event(window):
     # pylint: disable-msg=too-many-locals
     # pylint: disable-msg=consider-using-enumerate
     '''Creates a new window to remove an event'''
@@ -426,6 +426,7 @@ def remove_event():
 
             msg_string = f"Event title({event_title.get()}) has been successfully removed"
             msg_label.config(text=msg_string)
+            paste_event_list_labels(window)
 
         msg_label.place(x=25, y=90)
         remove_labels.append(msg_label)
@@ -465,7 +466,7 @@ def paste_event_list_labels(window):
     # Scrollbar only connects to ListBox
     # scrollbar = tk.Scrollbar(window)
     # scrollbar.pack(side=tk.RIGHT, fill=tk.Y, command=event_list.yview)
-
+    destroy_list_labels()
     x_loc = 0
     y_loc = 30
     if event_list:
@@ -516,7 +517,7 @@ def paste_event_list_labels(window):
                                         command=lambda: sort_event_window_labels_by_category(window))
             date_button.place(x=75, y=5)
             category_button.place(x=150, y=5)
-            remove_button = tk.Button(window, text="Remove Event", command=remove_event)
+            remove_button = tk.Button(window, text="Remove Event", command=lambda: remove_event(window))
             remove_button.place(x=300, y=5)
     else:
         no_event_label = tk.Label(window, text="No Events", font="arial 14 bold")
