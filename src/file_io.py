@@ -1,7 +1,7 @@
 # pylint: disable=wildcard-import
 # pylint: disable=unused-wildcard-import
 # pylint: disable=consider-using-f-string
-'''Handles file io for our calendar'''
+"""Handles file io for our calendar"""
 
 import json
 from datetime import *
@@ -10,7 +10,7 @@ from Event_Info import Event as eventInfo
 
 
 def event_list_to_dictionary(event_list):
-    '''Function to save events to a list of dictionaries for easy file io'''
+    """Function to save events to a list of dictionaries for easy file io"""
     saved_event_list = []
     for event in event_list:
         print(vars(event))
@@ -18,14 +18,14 @@ def event_list_to_dictionary(event_list):
     return saved_event_list
 
 def dictionary_list_to_file(saved_events):
-    '''Saves dictionary to file'''
+    """Saves dictionary to file"""
     with open('eventlist.txt', 'w', encoding='utf-8') as file_write:
         for event in saved_events:
             file_write.write(json.dumps(event, indent=4, sort_keys=True, default=str))
     return True
 
 def file_to_event_list():
-    '''Reads dictionary from file'''
+    """Reads dictionary from file"""
     loaded_dict_list = []
     with open('eventlist.txt', 'r', encoding='utf-8') as file_read:
         data = file_read.read()
@@ -34,7 +34,7 @@ def file_to_event_list():
     return dictionary_to_event_list(loaded_dict_list)
 
 def dictionary_to_event_list(loaded_dict_list):
-    '''Changes ditionary to event_info class'''
+    """Changes dictionary to event_info class"""
     loaded_event_list = []
     for event in loaded_dict_list:
         loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(),
@@ -45,13 +45,13 @@ def dictionary_to_event_list(loaded_dict_list):
     return loaded_event_list
 
 def category_list_to_file(category_list):
-    '''Saves list of categories to file'''
+    """Saves list of categories to file"""
     with open('categories.txt', 'w', encoding='utf-8') as file_write:
         for cat in category_list:
             file_write.write("%s\n" % cat)
 
 def file_to_category_list():
-    '''Loades list of categories from file to a list'''
+    """Loads list of categories from file to a list"""
     categories = []
     with open('categories.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
@@ -60,13 +60,13 @@ def file_to_category_list():
     return categories
 
 def category_colors_to_file(category_colors):
-    '''Saves list of category colors to file'''
+    """Saves list of category colors to file"""
     with open('category_colors.txt', 'w', encoding='utf-8') as file_write:
         for cat_col in category_colors:
             file_write.write("%s\n" % cat_col)
 
 def file_to_category_colors():
-    '''Loads list of category colors from file to a list'''
+    """Loads list of category colors from file to a list"""
     category_colors = []
     with open('category_colors.txt', 'r', encoding='utf-8') as file_read:
         for line in file_read:
