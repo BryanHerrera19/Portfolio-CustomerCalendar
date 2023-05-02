@@ -1,6 +1,11 @@
 # pylint: disable=missing-module-docstring
 # pylint:disable=duplicate-code
+# pylint: disable=missing-class-docstring
+# pylint: disable=global-statement
+# pylint: disable=wildcard-import
+# pylint: disable=wildcard-import
 #from datetime import date
+
 
 from datetime import datetime
 import time_help_functions as of

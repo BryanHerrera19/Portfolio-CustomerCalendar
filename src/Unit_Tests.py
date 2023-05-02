@@ -1,4 +1,8 @@
 # pylint: disable=invalid-name
+# pylint: disable=missing-class-docstring
+# pylint: disable=global-statement
+# pylint: disable=wildcard-import
+# pylint: disable=wildcard-import
 # pylint: disable=line-too-long
 """Unit Tests"""
 
