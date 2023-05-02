@@ -1,6 +1,6 @@
 
 # Authors
-Team Magneto consists of Bryan Herrera, Marissa Morones, Andrei Pelera, and Kevin Lin
+Team Magneton consists of Bryan Herrera, Marissa Morones, Andrei Pelera, and Kevin Lin
 
 ## Our Product
 - We are creating a time manangment and study tool calendar that helps students with procrastination
@@ -53,7 +53,7 @@ Color picker menu
 <img width="338" alt="image" src="https://user-images.githubusercontent.com/55124638/232838674-39dcc377-156f-4c8e-8637-6071dd563914.png">
 
 ### Sprint 4
-- Completed _ stories with __ complexity points
+- Completed 13 stories and 51 story point
 - Implemented:      
 
 
