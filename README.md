@@ -55,7 +55,17 @@ Color picker menu
 ### Sprint 4
 - Completed 13 stories and 51 story point
 - Implemented:      
-
+Ability to add or remove categories
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/55124638/236640429-e804f23c-ceb2-43c9-a89d-b698605240af.png">
+Save Events button
+<img width="113" alt="image" src="https://user-images.githubusercontent.com/55124638/236640482-75c48280-940d-4d0c-9c90-7617ad017a3c.png">
+Ability to Remove Events
+<img width="388" alt="image" src="https://user-images.githubusercontent.com/55124638/236640561-9e7b81b2-abc0-48bc-9ad2-6b3bfc2a22cf.png">
+Reminders for events
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/55124638/236640810-d9389808-1c6c-4434-b681-c063a40a7881.png">
+Categories are color coded
+<img width="59" alt="image" src="https://user-images.githubusercontent.com/55124638/236640861-0dd265b7-e69d-43a2-afb8-331809b74246.png">
+<img width="62" alt="image" src="https://user-images.githubusercontent.com/55124638/236640901-01f0044c-b273-4d43-a166-6fe917c7ba9f.png">
 
 ## For More Info    
 - [Customer Notes](customerNotes.md)
