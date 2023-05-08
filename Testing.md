@@ -8,6 +8,8 @@ Our program required a way of keep track of the current date and time as well as
 
 ### Test Cases for Reminders
 
+Two main types of functions for reminders: one responsible for checking if the time is equal, while the other checking if the dates are equal. Results from the following tests show that that both a date time variable type and date has to be converted into a string from the datetime python library in order to properly compare them with other dates and times. Converting them into strings also allows us to manipulate them much easier. Parts of a date time had to be removed to focus on either just the date or just the time. 
+
     def test_check_if_Times_match(self):
         """Test Case Should Return False"""
         current_time = "1:45:23"
@@ -57,6 +59,8 @@ Our program required a way of keep track of the current date and time as well as
         self.assertEqual(current_day, event_date)
 
 ### Test Cases for Timer
+
+The timer can only take numerical inputs and all input boxes for the timer should be filled before it can run. Results from the follwing test cases indicate that we need a proper way of converting time into string and analyzing each parts of the timer for any non-numerical input. Moreover, all input boxes (there are three: hour, minute, second) must be filled and there must be a function that allows us to check in each of the input boxes.
 
     def test_Save_A_New_Event_Should_Return_True(self):
         """Test Case should return True"""
