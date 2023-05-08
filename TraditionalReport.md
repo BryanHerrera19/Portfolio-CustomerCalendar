@@ -13,7 +13,7 @@ Final Zenhub board:
 # Testing
 [Testing.md](testing.md)
 # Implementation
-
+This project uses Python 3.10 with the libraries tkinter and tkcalendar powers the core graphical user interface and features.
 # Project Highlights
 
 # Things that could be improved
