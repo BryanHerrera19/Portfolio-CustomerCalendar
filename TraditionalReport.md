@@ -12,7 +12,7 @@ Final Zenhub board:
 ![image](https://user-images.githubusercontent.com/43161217/236720936-24187696-a50e-499b-9cb4-827f5e314455.png)
 # Testing
 
-[Testing.md](testing.md)
+[Testing.md](Testing.md)
 # Implementation
 This project uses Python 3.10 with the libraries tkinter and tkcalendar powers the core graphical user interface and features. We also utilized Pylint to check for coding errors.
 # Project Highlights :smiling_face_with_three_hearts:
