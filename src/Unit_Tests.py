@@ -44,6 +44,56 @@ class Test(unittest.TestCase):
             t = int(hourString) * 3600 + int(minuteString) * 60 + int(secondString)
             print(t)
 
+    def test_check_if_Times_match(self):
+        """Test Case Should Return False"""
+        current_time = "1:45:23"
+        event_start_time = "1:45"
+        self.assertEqual(current_time, event_start_time)
+
+    def test_check_if_dates_match(self):
+        """Test Case Should Return False"""
+        current_day = "2023-04-08"
+        event_date= "2023-5-07"
+        self.assertEqual(current_day, event_date)
+
+    def test_check_if_Times_match_1(self):
+        """Test Case Should Return False"""
+        current_time = "1:43"
+        event_start_time = "1:45"
+        self.assertEqual(current_time, event_start_time)
+
+    def test_check_if_dates_match_1(self):
+        """Test Case Should Return False"""
+        current_day = "2023-04-08"
+        event_date= "2023-05-07"
+        self.assertEqual(current_day, event_date)
+
+    def test_check_if_Times_match_2(self):
+        """Test Case Should Return True"""
+        current_time = "1:45"
+        event_start_time = "1:45"
+        self.assertEqual(current_time, event_start_time)
+
+    def test_check_if_dates_match_2(self):
+        """Test Case Should Return True"""
+        current_day = "2023-05-08"
+        event_date= "2023-05-08"
+        self.assertEqual(current_day, event_date)
+
+    def test_check_if_Times_match_3(self):
+        """Test Case Should Return True"""
+        current_time = "1:46"
+        event_start_time = "1:46"
+        self.assertEqual(current_time, event_start_time)
+
+    def test_check_if_dates_match_3(self):
+        """Test Case Should Return True"""
+        current_day = "2023-08-08"
+        event_date= "2023-08-08"
+        self.assertEqual(current_day, event_date)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
