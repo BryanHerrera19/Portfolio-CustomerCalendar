@@ -10,6 +10,22 @@ Team Magneton consists of Bryan Herrera, Marissa Morones, Andrei Pelera, and Kev
   - reminders
   - helpful study tips
   - save events into local workstation
+ 
+## Operational Features:
+- Calendar
+- Ability to create events
+- Calendar highlights days that have an event
+- Study tips
+- Ability to set time when creating events
+- Window that displays all events
+- Category selection when creating events
+- Study timer
+- Sort events by Date or Category
+- Ability to add or remove categories
+- Ability to save events, so they are still there when the program reopens
+- Ability to remove events
+- Categories are color coded
+- Ability to set a week, day, or hour before reminders to events
 
 ## How to Download App:    
 - N/A WIP
