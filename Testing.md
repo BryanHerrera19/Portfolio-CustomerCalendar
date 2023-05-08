@@ -4,6 +4,18 @@
 
 Our program required a way of keep track of the current date and time as well as event date and time. This is to compare the current day to a event in order to properly give the user reminders. Moreover, we also needed a way for the user to have a functioning study timer. To test this, we needed a way to make sure the inputs from users on the timer is valid. If the user input is invalid, our program should allow our user to re-enter a new value while letting them know that the current input is invalid. 
 
+### Conditions 
+
+As a student, I would like the ability to set my own timer for a study timer so that the study timer is more personalized and versatile.
+
+* The Timer must be Clear.
+* The Timer has three parts to enter: hour, minute, second.
+
+As a student, I would like to be reminded of upcoming events so that I can properly keep track of when events start and plan accordingly.
+
+* Users should have the ability to turn on or off the reminders.
+* Users should have the ability to choose what reminders should be on.
+
 ## Test Cases
 
 ### Test Cases for Reminders
