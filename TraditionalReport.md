@@ -55,4 +55,5 @@ This project uses Python 3.10 with the tkinter and tkcalendar libraries that pow
 
 # Lessons Learned
 (Advice for future COMP 129 students)
+
 An advice we have for future COMP 129 students is to manage your sprint (and time) well. Be diligent with time management to avoid procrastination or unneeded stress if a feature implemented causes bugs the day before a demo. Giving yourselves more time to check and fix for bugs at the end of the sprint greatly increases workflow productivity and stress to all team members.
