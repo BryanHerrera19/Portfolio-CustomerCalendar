@@ -2,7 +2,7 @@
 Authored by    
   - Bryan Herrera - Scrum Master - Assured that all stories were created and added to Zenhub. Also assured that each story had acceptance criteria as well as short information on its functionality.
   - Marissa Morones - Team member
-  - Andrei Pelera - 
+  - Andrei Pelera - Team member
   - Kevin Lin - Team member
 # Project Objectives
 This project is aimed to provide a time management and study tool for students to effectively manage their time.
