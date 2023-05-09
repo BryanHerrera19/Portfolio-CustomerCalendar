@@ -3,6 +3,7 @@
 Team Magneton consists of Bryan Herrera, Marissa Morones, Andrei Pelera, and Kevin Lin
 
 ## Our Product
+- Python Version: Python 3.10.8
 - We are creating a time manangment and study tool calendar that helps students with procrastination
 - This calendar features
   - creating and deleting events
