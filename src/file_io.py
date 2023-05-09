@@ -39,13 +39,16 @@ def file_to_event_list():
 def dictionary_to_event_list(loaded_dict_list):
     """Changes dictionary to event_info class"""
     loaded_event_list = []
-    for dict in loaded_dict_list:
-        for event in dict:
-            loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"), '%Y-%m-%d').date(),
-                                            event.get("start_time"),
-                                            event.get("start_time_day"), event.get("end_time"),
-                                            event.get("name"), event.get("notes"),
-                                            event.get("category")))
+    for tempdict in loaded_dict_list:
+        for event in tempdict:
+            loaded_event_list.append(eventInfo(datetime.strptime(event.get("day"),
+                                                                '%Y-%m-%d').date(),
+                                                                event.get("start_time"),
+                                                                event.get("start_time_day"),
+                                                                event.get("end_time"),
+                                                                event.get("name"),
+                                                                event.get("notes"),
+                                                                event.get("category")))
     return loaded_event_list
 
 def category_list_to_file(category_list):
