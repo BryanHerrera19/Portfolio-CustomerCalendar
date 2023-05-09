@@ -48,10 +48,13 @@ This project uses Python 3.10 with the tkinter and tkcalendar libraries that pow
 # Retrospective
 ### What parts of our program we would improve
 - Be able to add more QOL features a modern calendar has such as grouping events by categories or switching between dark and light mode
-- when opening a menu, change ruleset to not bury the submenu when opened
+- when opening a menu, find a work around to not bury the submenu when opened
+- Block out multiple days for an event 
+- 
 ### What parts of our teamwork/process that we would improve
 - Be consistent with our standups
 - workload more consistently spread out of the sprint rather than doing everything at the back end of the sprint
+- Avoid procrastination or better time management if workload is too much for that sprint
 
 # Lessons Learned
 (Advice for future COMP 129 students)
