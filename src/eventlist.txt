@@ -1,0 +1,20 @@
+[
+    {
+        "category": "GESC",
+        "day": "2023-05-08",
+        "end_time": "9:00AM",
+        "name": "Test",
+        "notes": "This is to test",
+        "start_time": "8:00",
+        "start_time_day": "AM"
+    },
+    {
+        "category": "SOCI",
+        "day": "2023-05-10",
+        "end_time": "9:00AM",
+        "name": "Test 2",
+        "notes": "This is to test multiple events",
+        "start_time": "8:00",
+        "start_time_day": "AM"
+    }
+]
