@@ -28,7 +28,11 @@ Team Magneton consists of Bryan Herrera, Marissa Morones, Andrei Pelera, and Kev
 - Ability to set a week, day, or hour before reminders to events
 
 ## How to Download App:    
-- N/A WIP
+- Go to https://github.com/comp129/customer-project-magneton2023
+- Go to "Releases" on the right side
+- Download "Customer.Project.-.Calendar.-.Magneton.zip"
+- Unzip the file
+- Run "main.exe"
 
 ## For More Info    
 - [Customer Notes](customerNotes.md)
