@@ -9,6 +9,8 @@ This project is aimed to provide a time management and study tool for students t
 # Project Design
 Our team goal is to create a functional calendar with features such as setting up events and reminders, a built-in study timer and tips, and saving events onto the local workstation.
 
+Python Version: Python 3.10.8
+
 Final Zenhub board:
 
 ![image](https://user-images.githubusercontent.com/43161217/236715772-31947c85-dfd9-4a1e-9736-ef0ecac2f6fe.png)
